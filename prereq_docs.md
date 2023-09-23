@@ -4,11 +4,11 @@ Install chocolatey from the instructions given in the link below.
 
 https://chocolatey.org/docs/installation
 ```
-choco install virtualbox --version=7.0.8 -y
+choco install virtualbox --version=7.0.10 -y
 ```
 
 ```
-choco install vagrant --version=2.3.4 -y
+choco install vagrant --version=2.3.7 -y
 ```
 
 ```
@@ -53,4 +53,37 @@ brew install --cask virtualbox
 ```
 ```
 brew install --cask vagrant
+```
+```
+brew install --cask vagrant-manager
+```
+```
+brew install git
+```
+```
+brew install openjdk@11
+```
+```
+sudo ln -sfn $HOMEBREW_PREFIX/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+```
+```
+exec zsh -l
+```
+```
+brew install --cask visual-studio-code
+```
+```
+brew install --cask intellij-idea
+```
+```
+brew install --cask intellij-idea-ce
+```
+```
+brew install --cask sublime-text
+```
+```
+brew install --cask sublime-text
+```
+```
+brew install awscli
 ```
