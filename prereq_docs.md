@@ -47,4 +47,10 @@ cat ~/.curlrc
 ```
 Run all the below commands in Terminal
 
-# (virtualbox command is not For MacOs M1/M2)
+### (virtualbox command is not For MacOs M1/M2)
+```
+brew install --cask virtualbox
+```
+```
+brew install --cask vagrant
+```
