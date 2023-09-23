@@ -22,3 +22,26 @@ choco install vscode -y
 ```
 choco install sublimetext3.app -y
 ```
+
+
+## MacOS Tools
+
+Install brew from the instructions given in the link below.
+
+https://brew.sh/
+
+After installing homebrew Create a file in users home directory with name .curlrc with content “-k” (-k without quotes and give a new line character after -k.)
+
+Steps:
+
+1. OpenTerminal
+2. Execute below command
+
+```
+echo -k > ~/.curlrc
+```
+
+3. Execute below command to see -k in file ~/.curlrc
+```
+cat ~/.curlrc
+```
