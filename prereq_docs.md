@@ -45,3 +45,6 @@ echo -k > ~/.curlrc
 ```
 cat ~/.curlrc
 ```
+Run all the below commands in Terminal
+
+# (virtualbox command is not For MacOs M1/M2)
