@@ -1,4 +1,6 @@
 ## VM Installation with Vagrant
+Before you begin with this, make sure you have followed the instructions in ```prereq_docs.md``` to install vagrant
+
 For Windows users open Git bash, for Mac OS users open terminal. Execute the command
 ```
 pwd
