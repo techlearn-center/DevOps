@@ -3,6 +3,11 @@
 Install chocolatey from the instructions given in the link below.
 
 https://chocolatey.org/docs/installation
+
+or follow the steps below to install chocolatey
+
+1. Run  ```Get-ExecutionPolicy```
+   If it returns Restricted, then run ```Set-ExecutionPolicy AllSigned or Set-ExecutionPolicy Bypass -Scope Process```
 ```
 choco install virtualbox --version=7.0.10 -y
 ```
