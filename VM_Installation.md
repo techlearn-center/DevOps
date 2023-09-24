@@ -50,7 +50,7 @@ ls
 ```
 You can now see a vagrantfile in this location. Execute the ```cat``` command to see the content of the file
 ```
-cat
+cat Vagrantfile
 ```
 To issue the command below, please make sure you are in the correct folder. Type ```pwd``` to make sure you are in this location /c/vagrant_vms/centos/
 ```
