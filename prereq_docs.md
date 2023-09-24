@@ -21,9 +21,12 @@ Set-ExecutionPolicy AllSigned or Set-ExecutionPolicy Bypass -Scope Process
 
 ```
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+```
+
+#### You now have choco installed on your computer. We will now install the rest of the tools using choco
+```
 choco install virtualbox --version=7.0.10 -y
 ```
-#### You now have choco installed on your computer. We will now install the rest of the tools using choco
 
 ```
 choco install vagrant --version=2.3.7 -y
