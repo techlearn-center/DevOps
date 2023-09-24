@@ -16,5 +16,10 @@ Execute ```pwd``` command to see your location and change directory to the newly
 ```
 cd vagrant_vms
 ```
+In this directory, we will create two directories centos and ubuntu. Before that execute the list command to see if there is anything in the directory
+```
+ls
+```
+
 
 
