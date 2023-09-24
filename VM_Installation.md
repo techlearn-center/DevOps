@@ -4,7 +4,7 @@ For Windows users open Git bash, for Mac OS users open terminal. Execute the com
 pwd
 ```
 This command shows the present working directory.
-We will be creating our files in c drive. Mac OS users should be using Desktop. Let's change directory to that location
+We will be creating our files in c drive. Mac OS users should be using Desktop as ``` cd `Desktop/```. Let's change directory to that location
 ```
 cd /c/
 ```
