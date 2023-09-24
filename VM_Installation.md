@@ -36,8 +36,78 @@ cd centos
 pwd
 ```
 Click on the link below and search for centos 9
+
 https://app.vagrantup.com/boxes/search
-![image](https://github.com/techlearn-center/DevOps/assets/144989969/73972688-fdc5-4799-bf8a-99c558bb1d85)
+
+#### Centos
+We will be using the eurolinux-vagrant/centos-stream-9 image/box.
+Go to git bash now and type:
+```
+vagrant init eurolinux-vagrant/centos-stream-9
+```
+```
+ls
+```
+You can now see a vagrantfile in this location. Execute the ```cat``` command to see the content of the file
+```
+cat
+```
+To issue the command below, please make sure you are in the correct folder. Type ```pwd``` to make sure you are in this location /c/vagrant_vms/centos/
+```
+vagrant up
+```
+```
+vagrant box list
+```
+```
+vagrant status
+```
+To login to the VM, issue the vagrant ssh command below:
+```
+vagrant ssh
+```
+We are in the centos VM now. You can see the prompt has changed. Do the following to see the user, you should see vagrant user now
+```
+whoami
+```
+To switch to root user, do this
+```
+sudo -i
+```
+To exit from root user:
+```
+exit
+```
+To power off the VM:
+```
+vagrant halt
+```
+To exit completely to your local computer:
+```
+exit
+```
+#### Ubuntu
+We will now be doing same for ubuntu in the ubuntu directory
+```
+pwd
+```
+The current location should be pointing to /c/vagrant_vms/centos so we will have to go level up the file structure and move into the ubuntu directory
+```
+cd ..
+```
+The command above takes you up one level (go back in direction). Now do 
+```
+cd ubuntu
+```
+```
+pwd
+```
+Our location now is /c/vagrant_vms/ubuntu. Go to vagrant cloud and search for ```ubuntu/jammy64```. Click on it. Go to git bash
+```
+vagrant init ubuntu/jammy64
+```
+The rest of the commands is just like what you did for Centos
+
 
 
 
