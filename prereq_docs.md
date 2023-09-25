@@ -15,8 +15,13 @@ Get-ExecutionPolicy
 You should see ```AllSigned```
 If it returns ```Restricted```, then run 
 ```
-Set-ExecutionPolicy AllSigned or Set-ExecutionPolicy Bypass -Scope Process
+Set-ExecutionPolicy AllSigned 
 ```
+or 
+```
+Set-ExecutionPolicy Bypass -Scope Process
+```
+
 2. Now run the following to install choco
 
 ```
