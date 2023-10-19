@@ -1,0 +1,10 @@
+[2022-01-15 10:14:22] INFO: Application started.
+[2022-01-15 10:15:00] INFO: User 'JohnDoe' logged in.
+[2022-01-15 10:15:10] WARNING: User 'JohnDoe' attempted to access restricted section.
+[2022-01-15 10:15:32] ERROR: App crashed.
+[2022-01-15 10:15:40] INFO: Attempting restart.
+[2022-01-15 10:16:00] INFO: Application restarted successfully.
+[2022-01-15 10:16:15] INFO: User 'AliceSmith' logged in.
+[2022-01-15 10:16:30] WARNING: High memory usage detected.
+[2022-01-15 10:17:00] INFO: Memory usage back to normal.
+[2022-01-15 10:18:00] INFO: User 'AliceSmith' logged out.
