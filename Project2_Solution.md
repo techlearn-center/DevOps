@@ -196,7 +196,7 @@ chmod 660 /home/department/HR/README.txt
 
 After executing these commands, only the group members will be able to read and write to the README.txt files in their respective department directories, while others won't have any access.
 
-## Advanced Task (for bonus points):
+## 5. Advanced Task (for bonus points):
 ### Create a shared directory at /home/shared.
 ### All users should be able to read files in this directory, but only members of the HR group should be able to create files or directories here. However, they shouldn't be able to delete files owned by others.
 
