@@ -59,7 +59,7 @@ From the image below, we can see Bob is asked to change password at first login
 
 <img src="./change_password.PNG" width="390" height="300">
 
-## Group Management:
+## 2. Group Management:
 ### Create three new groups: Developers, Designers, and HR.
 
 To create the three new groups:
@@ -119,7 +119,7 @@ sudo usermod -aG HR Dave
 sudo usermod -aG HR Eve
 ```
 
-## Directory Setup:
+## 3. Directory Setup:
 ### Create a directory for each group in /home/department/ (e.g., /home/department/Developers).
 ```
 sudo mkdir -p /home/department/Developers
@@ -159,7 +159,7 @@ Now only the members of each group can access their respective directories. For 
 
 
 
-## File Management:
+## 4. File Management:
 ### In each department directory, create a README.txt file that contains a brief description of the department.
 
 You'll need to create a README.txt file in each directory (Developers, Designers, HR etc.). 
