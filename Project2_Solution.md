@@ -1,4 +1,4 @@
-1. ## User Creation:
+## 1. User Creation:
 ### Create users for 5 new employees: Alice, Bob, Charlie, Dave, and Eve.
 
 ```
