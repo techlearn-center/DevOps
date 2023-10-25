@@ -187,7 +187,43 @@ chmod 660 /home/department/Developers/README.txt
 chmod 660 /home/department/Designers/README.txt
 ```
 
+
 #### For HR
 ```
 chmod 660 /home/department/HR/README.txt
 ```
+
+
+After executing these commands, only the group members will be able to read and write to the README.txt files in their respective department directories, while others won't have any access.
+
+## Advanced Task (for bonus points):
+### Create a shared directory at /home/shared.
+### All users should be able to read files in this directory, but only members of the HR group should be able to create files or directories here. However, they shouldn't be able to delete files owned by others.
+
+First, you'll create the directory at /home/shared:
+```
+sudo mkdir /home/shared
+```
+You want all users to read files and the HR group to write, so you would initially think of 755 (read and execute for all, write for owner).
+But since we want the HR group to write, it would be 775 (write for group as well):
+```
+sudo chmod 775 /home/shared
+```
+You want the HR group to have special permissions on this directory:
+
+```
+sudo chown :HR /home/shared
+
+```
+
+The sticky bit is a permission that, when set on a directory, allows only the owner of a file (or directory) within that directory to delete or rename their own files. 
+Everyone else, even if they have write permissions on the directory, cannot delete or rename files owned by others.
+
+```
+sudo chmod +t /home/shared
+```
+
+If you list the directory using ```ls -ld /home/shared```, you should now see a permission string that looks like **drwxrwxr-t**, where the *t* at the end represents the sticky bit.
+
+Now, all users can read files in **/home/shared**, members of the HR group can create files or directories, but they cannot delete or rename files owned by others due to the sticky bit.
+
