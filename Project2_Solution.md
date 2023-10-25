@@ -37,5 +37,5 @@ sudo passwd Eve
 
 To ensure they change their passwords at the first login, you can use ``` chage ``` command:
 
-<img src="./change_password.PNG" width="24" height="24">
+<img src="./change_password.PNG" width="200" height="200">
 
