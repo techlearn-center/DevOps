@@ -154,3 +154,35 @@ Now only the members of each group can access their respective directories. For 
 
 
 
+## File Management:
+### In each department directory, create a README.txt file that contains a brief description of the department.
+
+You'll need to create a README.txt file in each directory (Developers, Designers, HR etc.). 
+```
+echo "This is the Developers department." > /home/department/Developers/README.txt
+```
+```
+echo "This is the Designers department." > /home/department/Designers/README.txt
+```
+```
+echo "This is the HR department." > /home/department/HR/README.txt
+```
+
+### Ensure that only group members can read and write to the file, but others should not have any access.
+
+To ensure that only the group members can read (r) and write (w) to the file, and others should not have any access. To set these permissions, you can use the chmod command:
+
+#### For Developers
+```
+chmod 660 /home/department/Developers/README.txt
+```
+
+#### For Designers
+```
+chmod 660 /home/department/Designers/README.txt
+```
+
+#### For HR
+```
+chmod 660 /home/department/HR/README.txt
+```
