@@ -35,6 +35,6 @@ sudo passwd Dave
 sudo passwd Eve
 ```
 
-To ensure they change their passwords at the first login, you can use ####chage command:
+To ensure they change their passwords at the first login, you can use #### chage command:
 
 ![Screenshot](./change_password.PNG)
