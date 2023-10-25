@@ -121,10 +121,15 @@ sudo usermod -aG HR Eve
 
 ## Directory Setup:
 ### Create a directory for each group in /home/department/ (e.g., /home/department/Developers).
-
+```
 sudo mkdir -p /home/department/Developers
+```
+```
 sudo mkdir -p /home/department/Designers
+```
+```
 sudo mkdir -p /home/department/HR
+```
 
 ### Ensure only users of a group can access their respective directory. For instance, only Alice and Charlie should access the Developers directory.
 ```
