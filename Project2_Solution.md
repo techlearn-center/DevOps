@@ -37,5 +37,23 @@ sudo passwd Eve
 
 To ensure they change their passwords at the first login, you can use ``` chage ``` command:
 
+```
+sudo chage -d 0 Alice
+```
+```
+sudo chage -d 0 Bob
+```
+```
+sudo chage -d 0 Charlie
+```
+```
+sudo chage -d 0 Dave
+```
+```
+sudo chage -d 0 Eve
+```
+
+From the image below, we can see Bob is asked to change password at first login
+
 <img src="./change_password.PNG" width="390" height="300">
 
