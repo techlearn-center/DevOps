@@ -1,7 +1,0 @@
-http://example.com
-Here's a site that I often visit: http://mywebsite.org
-Another interesting website is http://interesting-site.net
-http://old-protocol.com still uses the old http instead of https.
-Some websites like http://unsecure.example should consider updating to https.
-I found this cool resource at http://resourcehub.example/resource1
-If you need documentation, check http://docs.example.com
