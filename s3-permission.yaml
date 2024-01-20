@@ -1,0 +1,16 @@
+{
+    "Version": "2012-10-17",
+    "Id": "BucketPolicy",
+    "Statement": [
+        {
+            "Sid": "AllAccess",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::terra-state-dove2024",
+                "arn:aws:s3:::terra-state-dove2024/*"
+            ]
+        }
+    ]
+}
