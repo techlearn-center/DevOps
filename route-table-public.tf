@@ -3,7 +3,7 @@
 ######################
 
 resource "aws_route_table" "public-route-table" {
-  vpc_id = aws_vpc.example.id
+  vpc_id = aws_vpc.multi-resources.id
 
   route {
     cidr_block = "0.0.0.0/0"
