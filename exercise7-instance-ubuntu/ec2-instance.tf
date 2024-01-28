@@ -66,5 +66,11 @@ resource "aws_instance" "container-ec2" {
   }
 
 }
+output "publicIP" {
+  value = aws_instance.container-ec2.public_ip
+}
+output "privateIP" {
+  value = aws_instance.container-ec2.private_ip
+}
 
 
