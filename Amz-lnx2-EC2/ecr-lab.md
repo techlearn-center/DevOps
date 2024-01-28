@@ -52,8 +52,16 @@ docker images
 - Click "Save" to attach the role to the EC2 instance.
 
 ### Run the following commands (replace account number):
-
-$ aws ecr create-repository --repository-name nginx --region us-east-1
+```
+aws ecr create-repository --repository-name nginx --region us-east-1
+```
+```
 $ docker tag nginx:latest <aws account id>.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
+```
+```
 $ aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <aws account id>.dkr.ecr.us-east-1.amazonaws.com/nginx
+```
+```
 $ docker push <aws account id>.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
+```
+```
