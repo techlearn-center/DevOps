@@ -54,7 +54,7 @@ docker images
 ### Run the following commands (replace account number):
 ```
 aws ecr create-repository --repository-name nginx --region us-east-1
-
+```
 ```
 docker tag nginx:latest <aws account id>.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
 ```
