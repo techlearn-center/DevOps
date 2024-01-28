@@ -25,23 +25,23 @@ docker images
 
 ### Create an IAM Role:
 
-In the IAM console, go to "Roles" and click "Create role".
-Select "AWS service" as the trusted entity and choose "EC2" as the use case.
-Click "Next: Permissions" to attach the policy you just created.
-Search for the policy by the name you gave it and select it.
-Click "Next: Tags" to add any tags if needed (this step is optional).
-Click "Next: Review", give the role a name and description (e.g ECR_Role), and create the role.
+- In the IAM console, go to "Roles" and click "Create role".
+- Select "AWS service" as the trusted entity and choose "EC2" as the use case.
+- Click "Next: Permissions" to attach the policy you just created.
+- Search for the policy by the name you gave it and select it.
+- Click "Next: Tags" to add any tags if needed (this step is optional).
+- Click "Next: Review", give the role a name and description (e.g ECR_Role), and create the role.
 
 ### Attach the IAM Role to an EC2 Instance:
 
-Go to the EC2 console and select the EC2 instance you want to attach the role to.
-In the instance's "Actions" menu, navigate to "Security", and then select "Modify IAM role".
-In the "IAM role" dropdown, select the IAM role you created.
-Click "Save" to attach the role to the EC2 instance.
+- Go to the EC2 console and select the EC2 instance you want to attach the role to.
+- In the instance's "Actions" menu, navigate to "Security", and then select "Modify IAM role".
+- In the "IAM role" dropdown, select the IAM role you created.
+- Click "Save" to attach the role to the EC2 instance.
 
 ### Run the following commands (replace account number):
 
-aws ecr create-repository --repository-name nginx --region us-east-1
-docker tag nginx:latest <aws account id>.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <aws account id>.dkr.ecr.us-east-1.amazonaws.com/nginx
-docker push <aws account id>.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
+$ aws ecr create-repository --repository-name nginx --region us-east-1
+$ docker tag nginx:latest <aws account id>.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
+$ aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <aws account id>.dkr.ecr.us-east-1.amazonaws.com/nginx
+$ docker push <aws account id>.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
