@@ -5,15 +5,27 @@ Make sure to create the key pair (container-key.pem, container-key.pem.pub) in y
 Connect to instance from your local machine using the pem key
 
 ### Run the following commands on EC2:
-
+```
 sudo su
+```
+```
 yum update
+```
+```
 yum install docker -y
+```
+```
 systemctl enable docker.service
+```
+```
 systemctl start docker.service
+```
+```
 docker pull nginx
+```
+```
 docker images
-
+```
 
 ### Create an IAM Policy:
 
