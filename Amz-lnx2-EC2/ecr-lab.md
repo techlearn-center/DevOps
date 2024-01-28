@@ -56,12 +56,12 @@ docker images
 aws ecr create-repository --repository-name nginx --region us-east-1
 ```
 ```
-$ docker tag nginx:latest <aws account id>.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
+docker tag nginx:latest <aws account id>.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
 ```
 ```
-$ aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <aws account id>.dkr.ecr.us-east-1.amazonaws.com/nginx
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <aws account id>.dkr.ecr.us-east-1.amazonaws.com/nginx
 ```
 ```
-$ docker push <aws account id>.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
+docker push <aws account id>.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
 ```
 ```
