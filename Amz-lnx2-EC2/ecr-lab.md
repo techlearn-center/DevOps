@@ -17,11 +17,11 @@ docker images
 
 ### Create an IAM Policy:
 
-Go to the IAM console in AWS.
-Navigate to "Policies" and click "Create policy".
-You can use the JSON editor to input the contents of your "ecr-allow-all.json" file.
-Review the policy and give it a meaningful name and description (e.g ECRPolicy).
-Click "Create policy" to finalize.
+- Go to the IAM console in AWS.
+- Navigate to "Policies" and click "Create policy".
+- You can use the JSON editor to input the contents of your "ecr-allow-all.json" file.
+- Review the policy and give it a meaningful name and description (e.g ECRPolicy).
+- Click "Create policy" to finalize.
 
 ### Create an IAM Role:
 
