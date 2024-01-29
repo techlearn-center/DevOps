@@ -1,5 +1,5 @@
 #### Containerize an applicaion tutorial link
-[https://docs.docker.com/get-started/02_our_app/]
+https://docs.docker.com/get-started/02_our_app/
 
 #### Run a docker container 
 ```
