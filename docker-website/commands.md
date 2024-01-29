@@ -15,9 +15,12 @@ wget https://www.tooplate.com/zip-templates/2137_barista_cafe.zip
 ```
 
 #### Install zip package 
+
 ```
 apt install zip -y
 ```
 
 #### Unzip the archive directory
+```
 unzip 2137_barista_cafe.zip
+```
