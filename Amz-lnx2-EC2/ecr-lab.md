@@ -51,7 +51,7 @@ docker images
 - In the "IAM role" dropdown, select the IAM role you created.
 - Click "Save" to attach the role to the EC2 instance.
 
-### Run the following commands in your VSCode terminal (replace account number):
+### Run the following commands in your VSCode terminal (replace account id):
 ```
 aws ecr create-repository --repository-name nginx --region us-east-1
 ```
