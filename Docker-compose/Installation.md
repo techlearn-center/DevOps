@@ -8,3 +8,8 @@ Make it executable
 ```
 chmod +x /usr/local/bin/docker-compose
 ```
+check the version
+
+```
+Docker Compose version v2.24.5
+```
