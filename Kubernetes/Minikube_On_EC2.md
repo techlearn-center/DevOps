@@ -17,7 +17,7 @@ Once the Docker installation is completed, use the following link [3] to install
 
 https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 
-###Step 4: Install Minikube
+### Step 4: Install Minikube
 Once both Docker and Kubectl are installed, you may use following set of commands to install Minikube.
 
 https://minikube.sigs.k8s.io/docs/start/
