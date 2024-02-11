@@ -1,4 +1,5 @@
 Link to installation https://minikube.sigs.k8s.io/docs/start/
+
 Note: Make sure you have virtualBox or Docker Desktop installed on your machine
 
 ### Using Choco on Windows
