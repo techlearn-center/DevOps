@@ -20,12 +20,13 @@ kubectl logs command-demo
 ```
 kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.10 
 ```
+
 The above command created a deployment named hello minikube using image from google registry 
 
 ```
 kubectl expose deployment hello-minikube --type=NodePort --port=8080
 ```
 ```
-$minikube service hello-minikube --url
+minikube service hello-minikube --url
 ```
 
