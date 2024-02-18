@@ -28,6 +28,12 @@ https://kubernetes.io/docs/concepts/services-networking/ingress/
 
 https://kubernetes.github.io/ingress-nginx/deploy/#aws
 
+### Define command argument
+https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/
+
+### Cheat sheet
+https://kubernetes.io/docs/reference/kubectl/quick-reference/
+
 https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
 
 https://kubernetes.io/docs/reference/kubectl/cheatsheet/
