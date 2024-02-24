@@ -5,6 +5,7 @@ git --version
 ## Create a directory / folder
 
 mkdir (foldername)
+
 cd (foldername)
 
 ## Initialize repository
@@ -14,7 +15,9 @@ git init
 ## Create and add test file
 
 touch (filename)
+
 git status
+
 git add (filename)
 
 ## Add multiple files
