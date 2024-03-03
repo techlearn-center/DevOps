@@ -1,4 +1,8 @@
 ```
+sudo apt update
+```
+
+```
 sudo apt search jdk
 ```
 
