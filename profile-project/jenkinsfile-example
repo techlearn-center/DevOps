@@ -1,0 +1,40 @@
+pipeline {
+    agent any 
+    tools {
+      maven "MAVEN3"
+      jdk "OracleJDK11"
+    }
+
+    stages {
+      stage('Fetch Code'){
+         steps {
+            git branch: 'CICD', url: 'https://github.com/techlearn-center/DevOps.git'
+         }
+      }
+
+      stage('Build'){
+        steps {
+          // Change directory to 'profile-project' before running the Maven command
+          dir('profile-project') {
+            sh 'mvn install -DskipTests'
+          }
+        }
+        post {
+           success {
+             echo 'Archiving artifacts now.'
+             // Ensure the path to the .war files includes the 'profile-project' directory if needed
+             archiveArtifacts artifacts: 'profile-project/**/target/*.war' 
+           }
+        }
+      }
+
+      stage('UNIT Test') {
+        steps {
+          // Change directory to 'profile-project' before running the Maven command
+          dir('profile-project') {
+            sh 'mvn test'
+          }
+        }
+      }
+    }
+}
