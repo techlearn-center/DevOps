@@ -239,7 +239,8 @@ pipeline {
 }
 ```
 
-Now let's go to jenkins and run this, click new item, name, select pipeline, paste your script and run
+Now go to jenkins and run this, 
+- click new item, name, select pipeline, paste the script above and run
 Let's replicate the freestyle project we did : fetch, build and run 
 
 Go to manage jenkins -> tools and under jdk  - put the name OracleJDK11 , for JAVA_HOME : 
