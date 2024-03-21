@@ -156,3 +156,70 @@ Let's add a new configuration in Post-build Actions
 **/*.war   -the star star slash means recursively look in each and every folder a file that ends in .war and archive it
 
 
+#### Pipeline As A Code 
+
+Jenkins way of setting up pipeline automatically is by using a Jenkinsfile. We can put the file in a source code or we can add it in the job itself.
+Jenkinsfile defines stages in CI/CD piepline
+Jenkinsfile is a text file with Pipeline DSL syntax
+Similar to groovy, but you dont need to know groovy to write jenkensfile.
+Two syntax
+ - scripted
+ - declarative : we will use declarative
+
+##### Concept
+- Pipeline: We start with the main block which is pipeline. This will be executed by Jenkins
+- Node/Agent: You can define where this pipeline can get executed on which node or agent
+- Stages: Where the execution happens. 
+- Steps: In stages you have steps which could be commands like maven install, git pull or upload artifact to Nexus or any step.
+ 
+##### Syntax
+```
+pipeline {
+    agent any
+    tools {
+       maven "MAVEN3"
+       jdk "ORACLEJDK11"
+      
+    }
+    stages {              # within stage we have steps
+      stage('Fetch Code') {
+         steps {
+            git branch: 'CICD', url: 'https://github.com/techlearn-center/DevOps.git'   #mention the commands or plugins to use
+         }
+      }
+      stage('Build') {
+        steps{     #run shell commands in the steps 
+          sh 'mvn install -DskipTests'
+        }
+        post {
+           success {   #if job is successful
+              echo 'Archiving artifacgts now.'
+              archiveArtifacts artifacts: '**/*.war'
+           }
+        } 
+      }
+      stage('UNIT TESTS') {
+         steps {
+            sh 'mvn test
+         }
+      }
+    }
+
+}
+```
+
+Now let's go to jenkins and run this, click new item, name, select pipeline, paste your script and run
+Let's replicate the freestyle project we did : fetch, build and run 
+
+Go to manage jenkins -> tools and under jdk  - put the name OracleJDK11 , for JAVA_HOME : 
+ssh into your server and ...jdk tools are installed in /usr/lib/jvm/
+
+You can add jdk8 by installing 
+apt search jdk
+apt install openjdk-8-jdk -y
+
+Maven is easier to install.
+Give the name MAVEN3
+select the latest version
+
+GIT is by default installed in ubuntu
