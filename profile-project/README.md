@@ -203,6 +203,7 @@ pipeline {
 6. Defines the "Deploy" stage.
 7. Perform some steps related to the "Deploy" stage.
 
+Let's work on a concrete example below:
 ```
 pipeline {
     agent any
