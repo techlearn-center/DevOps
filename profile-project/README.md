@@ -171,7 +171,7 @@ Two syntax
   - Node/Agent: You can define where this pipeline can get executed on which node or agent
   - Tools: From your global tool configuration if you have included some tools, then you can mention them here; like SonarScanner, or Maven or JDK.
   - Environment: This is the environment variables
-  -  Stages: Steps that we want to execute in our job 
+  -  Stages: Steps that we want to execute in our job. Here we can have multiple stages
   - Steps: In stages you have steps which could be commands like maven install, git pull or upload artifact to Nexus or any step.
  
 ##### Syntax
