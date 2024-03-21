@@ -131,7 +131,7 @@ Add  build step: Multiple build step you can add in the same job. Now save it an
 A green check means the job was successful. click on it and check the console output
 
 Workspace holds the data of the job. Let's go to configure and add some few build steps like below 
-
+```
 echo "This is a test job ..." >> myfile.txt
 ls -l
 echo
@@ -139,6 +139,7 @@ echo "##############################"
 echo "Printing my files"
 echo "##############################"
 cat myfile.txt
+```
 
 #### First Build Job
 We will now create an actual build job that will fetch our source code from github and build the artifact by using mvn command
