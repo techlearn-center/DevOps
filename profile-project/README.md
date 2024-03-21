@@ -175,33 +175,33 @@ Two syntax
 ##### Syntax
 ```
 pipeline {
-    agent any
+    agent any (1)
     stages {
-        stage('Build') {
+        stage('Build') { (2)
             steps {
-                //
+                //  (3)
             }
         }
-        stage('Test') {
+        stage('Test') {  (4)
             steps {
-                //
+                //  (5)
             }
         }
-        stage('Deploy') {
+        stage('Deploy') {   (6)
             steps {
-                //
+                //    (7)
             }
         }
     }
 }
 ```
-* Execute this Pipeline or any of its stages, on any available agent.
-* Defines the "Build" stage.
-* Perform some steps related to the "Build" stage.
-* Defines the "Test" stage.
-* Perform some steps related to the "Test" stage.
-* Defines the "Deploy" stage.
-* Perform some steps related to the "Deploy" stage.
+1. Execute this Pipeline or any of its stages, on any available agent.
+2. Defines the "Build" stage.
+3. Perform some steps related to the "Build" stage.
+4. Defines the "Test" stage.
+5. Perform some steps related to the "Test" stage.
+6. Defines the "Deploy" stage.
+7. Perform some steps related to the "Deploy" stage.
 
 ```
 pipeline {
