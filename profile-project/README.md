@@ -168,11 +168,11 @@ Two syntax
 
 ##### Concept
  Pipeline: We start with the main block which is pipeline. Everything comes inside the pipeline block. This will be executed by Jenkins. In pipeline we have agent, tools, environment, stages.
-  ** Node/Agent: You can define where this pipeline can get executed on which node or agent
-  ** Tools: From your global tool configuration if you have included some tools, then you can mention them here; like SonarScanner, or Maven or JDK.
-  ** Environment: This is the environment variables
-  **  Stages: Steps that we want to execute in our job 
-  ** Steps: In stages you have steps which could be commands like maven install, git pull or upload artifact to Nexus or any step.
+  - Node/Agent: You can define where this pipeline can get executed on which node or agent
+  - Tools: From your global tool configuration if you have included some tools, then you can mention them here; like SonarScanner, or Maven or JDK.
+  - Environment: This is the environment variables
+  -  Stages: Steps that we want to execute in our job 
+  - Steps: In stages you have steps which could be commands like maven install, git pull or upload artifact to Nexus or any step.
  
 ##### Syntax
 ```
