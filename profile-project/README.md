@@ -146,7 +146,7 @@ We will now create an actual build job that will fetch our source code from gith
 Click on new item, give it a name "Build"
 Add a title " build artifact from profile sorce code. We need git , maven and jdk and we have all that.
 On the JDK drop down, select OracleJDK11
-Under sCM, select Git and add the git url which you want to run "
+Under SCM, select Git and add the git url which you want to run "
 
 
 For now we will keep the artifact here  until we see nexus where we will now store all our artifacts.
@@ -154,10 +154,4 @@ For now we will keep the artifact here  until we see nexus where we will now sto
 Let's add a new configuration in Post-build Actions
 **/*.war   -the star star slash means recursively look in each and every folder a file that ends in .war and archive it
 
-
-Since this was a new server, there is no app installed.
-apt update && apt install maven -y
-
-So all we have done so far is to get a hang of Jenkins and the build process. Things will get more complicated in the coming lectures where we eill integrate multiple tools with Jenkins: Nexus sonatype repository, SonarQUbe unit testing, deploying the artifact, containerizing, deploying containers to ECS.
-If you master this section, you will never have a problem in understanding CICD. You can use any tool and technology to create your own CICD
 
