@@ -79,6 +79,17 @@ Here's a simple example of a pom.xml file for a Java project:
 ```
 This example specifies a simple Java project that includes a dependency on JUnit for testing and configures the Maven Compiler Plugin to compile the project using Java 1.8. The `pom.xml` file is central to a Maven project, dictating how the project is built, packaged, and managed.
 
+The `pom.xml` file itself does not explicitly define the project's directory structure in the form of paths or folder listings. Instead, Maven projects follow a standard directory layout convention, which is implicitly understood by Maven and does not need to be specified in the pom.xml. This convention allows Maven to automatically know where to find source code, resources, test code, and other elements of the project. However, if your project deviates from these conventions, you can specify alternative paths using the <build> section in the pom.xml.
+
+#### Standard Maven Project Directory Structure
+Here's an overview of the default Maven project directory structure:
+
+- `src/main/java`: This directory contains the project's main Java source files.
+- `src/main/resources`: This directory holds resources associated with the project, such as properties files, configuration files, and other non-Java resources that should be included in the final artifact.
+- `src/test/java`: Contains the Java source files for the project's tests.
+- `src/test/resources`: Resources for the test code, similar to src/main/resources, but not included in the final artifact and only used during testing.
+- `target/`: The default directory where Maven outputs the project artifacts and other generated files (e.g., compiled classes, packaged JAR).
+
 # Continuous Integration
 In the development of a product, developers regularly commit, build, and locally test their code before pushing it to a centralized version control system. This practice is consistently followed by all team members.
 
