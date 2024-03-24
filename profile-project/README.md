@@ -39,8 +39,7 @@ pom.xml is a fundamental file in Maven, a popular build automation tool used pri
 - `\<pluginRepositories\>`: Specifies repositories for downloading plugins.
 - `\<distributionManagement\>`: Configures where to publish artifacts and how to release the project.
 
-#### Specifying a Different Directory Structure
-If you need to specify a different source or resource directory, you can do so in the pom.xml under the <build> section. For example, to change the source directory:
+
 
 #### Example
 Here's a simple example of a pom.xml file for a Java project:
@@ -92,6 +91,27 @@ Here's an overview of the default Maven project directory structure:
 - `src/test/java`: Contains the Java source files for the project's tests.
 - `src/test/resources`: Resources for the test code, similar to src/main/resources, but not included in the final artifact and only used during testing.
 - `target/`: The default directory where Maven outputs the project artifacts and other generated files (e.g., compiled classes, packaged JAR).
+
+#### Specifying a Different Directory Structure
+If you need to specify a different source or resource directory, you can do so in the pom.xml under the <build> section. For example, to change the source directory:
+```
+<build>
+    <sourceDirectory>src/main/custom</sourceDirectory>
+</build>
+
+```
+And to change the resources directory:
+
+```
+<build>
+    <resources>
+        <resource>
+            <directory>src/main/custom-resources</directory>
+        </resource>
+    </resources>
+</build>
+```
+These custom configurations allow Maven to adapt to non-standard project structures, though it's generally recommended to stick with the conventional layout for consistency and compatibility with other Maven tools and projects.
 
 # Continuous Integration
 In the development of a product, developers regularly commit, build, and locally test their code before pushing it to a centralized version control system. This practice is consistently followed by all team members.
