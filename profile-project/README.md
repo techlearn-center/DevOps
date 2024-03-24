@@ -26,18 +26,18 @@ sql dump file:
 pom.xml is a fundamental file in Maven, a popular build automation tool used primarily for Java projects. POM stands for Project Object Model. The pom.xml file is an XML file that contains information about the project and configuration details used by Maven to build the project. It includes the project's directory structure, plugin information, dependencies, and other necessary configurations. Here are the key components often found in a pom.xml file:
 #### Basic Structure
 - \<modelVersion\>: Specifies the model version of the POM. For Maven 2 and 3, this is usually 4.0.0.
-- <groupId>: Defines the group or organization that the project belongs to. This is often used to structure the package names.
-- <artifactId>: The name of the project. This is used as the base name for the generated artifact (e.g., JAR or WAR file).
-- <version>: The version of the project. Together with the groupId and artifactId, this uniquely identifies the artifact produced by Maven.
-- <packaging>: Defines how the project should be packaged. Common values include jar, war, and pom.
+- \<groupId\>: Defines the group or organization that the project belongs to. This is often used to structure the package names.
+- \<artifactId\>: The name of the project. This is used as the base name for the generated artifact (e.g., JAR or WAR file).
+- \<version\>: The version of the project. Together with the groupId and artifactId, this uniquely identifies the artifact produced by Maven.
+- \<packaging\>: Defines how the project should be packaged. Common values include jar, war, and pom.
 
 #### Key Elements
-- <dependencies>: Lists the project dependencies required to build and run the project. Each dependency is defined by its groupId, artifactId, and version.
-- <build>: Specifies build settings, including plugins and tasks that need to be executed during the build process.
-- <properties>: Allows the definition of project-wide properties that can be used throughout the POM.
-- <repositories>: Defines additional repositories for downloading dependencies that are not available in Maven Central.
-- <pluginRepositories>: Specifies repositories for downloading plugins.
-- <distributionManagement>: Configures where to publish artifacts and how to release the project.
+- \<dependencies\>: Lists the project dependencies required to build and run the project. Each dependency is defined by its groupId, artifactId, and version.
+- \<build\>: Specifies build settings, including plugins and tasks that need to be executed during the build process.
+- \<properties\>: Allows the definition of project-wide properties that can be used throughout the POM.
+- \<repositories\>: Defines additional repositories for downloading dependencies that are not available in Maven Central.
+- \<pluginRepositories\>: Specifies repositories for downloading plugins.
+- \<distributionManagement\>: Configures where to publish artifacts and how to release the project.
 
 #### Example
 Here's a simple example of a pom.xml file for a Java project:
