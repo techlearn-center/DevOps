@@ -32,12 +32,15 @@ pom.xml is a fundamental file in Maven, a popular build automation tool used pri
 - `\<packaging\>`: Defines how the project should be packaged. Common values include jar, war, and pom.
 
 #### Key Elements
-- \<dependencies\>: Lists the project dependencies required to build and run the project. Each dependency is defined by its groupId, artifactId, and version.
-- \<build\>: Specifies build settings, including plugins and tasks that need to be executed during the build process.
-- \<properties\>: Allows the definition of project-wide properties that can be used throughout the POM.
-- \<repositories\>: Defines additional repositories for downloading dependencies that are not available in Maven Central.
-- \<pluginRepositories\>: Specifies repositories for downloading plugins.
-- \<distributionManagement\>: Configures where to publish artifacts and how to release the project.
+- `\<dependencies\>`: Lists the project dependencies required to build and run the project. Each dependency is defined by its groupId, artifactId, and version.
+- `\<build\>`: Specifies build settings, including plugins and tasks that need to be executed during the build process.
+- `\<properties\>`: Allows the definition of project-wide properties that can be used throughout the POM.
+- `\<repositories\>`: Defines additional repositories for downloading dependencies that are not available in Maven Central.
+- `\<pluginRepositories\>`: Specifies repositories for downloading plugins.
+- `\<distributionManagement\>`: Configures where to publish artifacts and how to release the project.
+
+#### Specifying a Different Directory Structure
+If you need to specify a different source or resource directory, you can do so in the pom.xml under the <build> section. For example, to change the source directory:
 
 #### Example
 Here's a simple example of a pom.xml file for a Java project:
