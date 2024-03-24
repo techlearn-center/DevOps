@@ -71,7 +71,7 @@ pipeline {
          steps {
             dir('profile-project') {
                timeout(time: 1, unit: 'HOURS') {
-               waitDorQualityGate abortPipeline: true
+               waitForQualityGate abortPipeline: true
                }
             }
          }
