@@ -25,7 +25,7 @@ sql dump file:
 ### pom.xml
 pom.xml is a fundamental file in Maven, a popular build automation tool used primarily for Java projects. POM stands for Project Object Model. The pom.xml file is an XML file that contains information about the project and configuration details used by Maven to build the project. It includes the project's directory structure, plugin information, dependencies, and other necessary configurations. Here are the key components often found in a pom.xml file:
 #### Basic Structure
-- <modelVersion>: Specifies the model version of the POM. For Maven 2 and 3, this is usually 4.0.0.
+- \<modelVersion\>: Specifies the model version of the POM. For Maven 2 and 3, this is usually 4.0.0.
 - <groupId>: Defines the group or organization that the project belongs to. This is often used to structure the package names.
 - <artifactId>: The name of the project. This is used as the base name for the generated artifact (e.g., JAR or WAR file).
 - <version>: The version of the project. Together with the groupId and artifactId, this uniquely identifies the artifact produced by Maven.
