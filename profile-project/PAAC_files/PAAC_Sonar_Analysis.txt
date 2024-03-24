@@ -39,7 +39,10 @@ pipeline {
 
       stage('Checkstyle Analysis'){
          steps {
-           sh 'mvn checkstyle:checkstyle'
+            // Change directory to 'profile-project' before running the Maven command
+            dir('profile-project') {
+               sh 'mvn checkstyle:checkstyle'
+            }
          }
       }
       stage('Sonar Analysis'){
