@@ -39,7 +39,7 @@ pipeline {
 
       stage('Checkstyle Analysis'){
          steps {
-            // Change directory to 'profile-project' before running the Maven command
+            // Change directory to 'profile-project' before running the Maven  command on checkstyle
             dir('profile-project') {
                sh 'mvn checkstyle:checkstyle'
             }
@@ -50,7 +50,9 @@ pipeline {
            scannerHome = tool 'sonar4.7'
         }
         steps {
-           withSonarQubeEnv('sonar') {
+             // Change directory to 'profile-project' before running the Sonarqube command
+            dir('profile-project') {
+                withSonarQubeEnv('sonar') {
                    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
                    -Dsonar.projectName=vprofile \
                    -Dsonar.projectVersion=1.0 \
@@ -59,7 +61,8 @@ pipeline {
                    -Dsonar.junit.reportsPath=target/surefire-reports/ \
                    -Dsonar.jacoco.reportsPath=target/jacoco.exec \
                    -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml'''
-           }
+                }
+            }
 
         }
       }
