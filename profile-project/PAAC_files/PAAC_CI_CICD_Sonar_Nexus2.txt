@@ -1,0 +1,109 @@
+pipeline {
+    agent any 
+    tools {
+      maven "MAVEN3"
+      jdk "OracleJDK11"
+    }
+
+    stages {
+      stage('Fetch Code'){
+         steps {
+            git branch: 'CICD', url: 'https://github.com/techlearn-center/DevOps.git'
+         }
+      }
+
+      stage('Build'){
+        steps {
+          // Change directory to 'profile-project' before running the Maven command
+          dir('profile-project') {
+            sh 'mvn clean install -DskipTests'
+          }
+        }
+        post {
+           success {
+             echo 'Archiving artifacts now.'
+             // Ensure the path to the .war files includes the 'profile-project' directory if needed
+             archiveArtifacts artifacts: 'profile-project/**/target/*.war' 
+           }
+        }
+      }
+
+      stage('UNIT Test') {
+        steps {
+          // Change directory to 'profile-project' before running the Maven command
+          dir('profile-project') {
+            sh 'mvn test'
+          }
+        }
+      }
+
+      stage('Checkstyle Analysis'){
+         steps {
+            // Change directory to 'profile-project' before running the Maven  command on checkstyle
+            dir('profile-project') {
+               sh 'mvn checkstyle:checkstyle'
+            }
+         }
+      }
+      stage('Sonar Analysis'){
+        environment {
+           scannerHome = tool 'sonar4.7'
+        }
+        steps {
+             // Change directory to 'profile-project' before running the Sonarqube command
+            dir('profile-project') {
+                withSonarQubeEnv('sonar') {
+                   sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
+                   -Dsonar.projectName=vprofile \
+                   -Dsonar.projectVersion=1.0 \
+                   -Dsonar.sources=src/ \
+                   -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/ \
+                   -Dsonar.junit.reportsPath=target/surefire-reports/ \
+                   -Dsonar.jacoco.reportsPath=target/jacoco.exec \
+                   -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml'''
+                }
+            }
+
+        }
+      }
+       
+      stage("publish to nexus") {
+            steps {
+                script {
+                    dir('profile-project') {
+                        // Now, all operations here are relative to 'profile-project' directory
+                        pom = readMavenPom file: "pom.xml";
+                        filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
+                        echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
+                        artifactPath = filesByGlob[0].path;
+                        artifactExists = fileExists artifactPath;
+
+                        if(artifactExists) {
+                            echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
+
+                            nexusArtifactUploader(
+                                nexusVersion: 'nexus3',
+                                protocol: 'http',
+                                nexusUrl: '34.238.44.66:8081',
+                                groupId: pom.groupId,
+                                version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
+                                repository: 'vprofile-repo',
+                                credentialsId: 'nexuslogin',
+                                artifacts: [
+                                    [artifactId: pom.artifactId,
+                                    classifier: '',
+                                    file: artifactPath,
+                                    type: pom.packaging]
+                                ]
+                            );
+
+                        } else {
+                            error "*** File: ${artifactPath}, could not be found";
+                        }
+                    }
+                }
+            }
+        }
+    }    
+    
+}
