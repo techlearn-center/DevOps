@@ -46,8 +46,8 @@ Create the script to set up the cluster
 ```
 vi install-kops-tool.sh
 ```
+Copy and paste below script in the vi editor. Make sure to save it (:wq)
 
-### Start of code ###
 ```
 #!/bin/bash
 
@@ -59,6 +59,9 @@ read awssecret
 
 echo "Enter Cluster Name: (ex: my-kube.k8s.local)"
 read clname
+
+echo "Enter S3 bucket name: (ex: my-kube-k8s-local)"
+read s3buck
 
 echo "Enter an AZ for the cluster:"
 read az
@@ -85,33 +88,39 @@ aws configure set aws_secret_access_key $awssecret
 ssh-keygen -N "" -f $HOME/.ssh/id_rsa
 
 # Create an S3 Bucket where kOps will save all the cluster's state information.
-aws s3 mb s3://$clname
+aws s3 mb s3://$s3buck
 
-# Expose the s3 bucket as environment variables. 
-export KOPS_STATE_STORE=s3://$clname
+# Expose the s3 bucket as environment variables.
+export KOPS_STATE_STORE=s3://$s3buck
 
-# Create the cluster with 2 worker nodes. 
-kops create cluster --node-count=2 --master-size="t3.medium" --node-size="t3.medium" --master-volume-size=30 --node-volume-size=30 --zones=$az --name $clname
+# Create the cluster with 2 worker nodes.
+kops create cluster --node-count=2 --master-size="t3.medium" --node-size="t3.medium" --master-volume-size=30 --node-volume-size=30 --zones=$az --name $clname --state=s3://$s3buck
 
-# Apply the specified cluster specifications to the cluster 
+# Apply the specified cluster specifications to the cluster
 kops get cluster
-kops update cluster $clname --yes
+kops update cluster $clname --yes --state=s3://$s3buck
 
-# The .bashrc file is a script file that’s executed when a user logs in. 
-echo "export KOPS_STATE_STORE=s3://$clname" >> .bashrc
+# The .bashrc file is a script file that’s executed when a user logs in.
+echo "export KOPS_STATE_STORE=s3://$s3buck" >> .bashrc
 ```
 
-### End of code ###
+Run the script to setup and configure the Kubernetes cluster. 
 
-#Run the script to setup and configure the Kubernetes cluster. Enter the AWS keys, Availability 
-#Zone, and cluster name when prompted. Cluster name needs to be in the format <name>.k8s.local
-
+Enter the AWS keys, Availability Zone, and cluster name when prompted.
+ 
+Cluster name needs to be in the format <name>.k8s.local
+```
 chmod +x install-kops-tool.sh 
+```
 
-# execute
+Now execute the script
+```
 bash install-kops-tool.sh
+```
 OR
+```
 ./install-kops-tool.sh
+```
 
 # Enter Access Key 
 xxxxxx
@@ -123,14 +132,20 @@ kube102.k8s.local
 
 AZ:us-east-1a (Enter any AZ of your choice)
 
-# Set S3 bucket environment variable. Bucket name will be same as the name of cluster entered 
-# while executing a script
-export KOPS_STATE_STORE=s3://< Cluster_Name >
-Ex:
-export KOPS_STATE_STORE=s3://kube102.k8s.local
+Set S3 bucket environment variable. Bucket name will be same as the name of cluster but with hyphens instead of periods
 
-# get the cluster list
+export KOPS_STATE_STORE=s3://< Cluster-Name >
+
+Ex:
+```
+export KOPS_STATE_STORE=s3://kube102-k8s-local
+```
+
+Get the cluster list
+
+```
 kops get cluster
+```
 
 # Export a kubeconfig file for a cluster from the state store using cluster admin user. By default, 
 # the configuration will be saved into a users $HOME/.kube/config file.
@@ -149,10 +164,12 @@ kops validate cluster --wait 10m --count 3
 
 Task 2: create a Pod using YAML
 ------------------------------
+```
 vi 2048-pod.yaml
+```
 or 
 nano 2048-pod.yaml
-
+```
 apiVersion: v1
 kind: Pod
 metadata:
@@ -165,20 +182,26 @@ spec:
      image: blackicebird/2048
      ports:
        - containerPort: 80
+```
 
-
-# apply the 2048-pod file
+apply the 2048-pod file
+```
 kubectl apply -f 2048-pod.yaml
-#pod/2048-pod created
+```
+pod/2048-pod created
 
-# list the newly created pod
+list the newly created pod
+```
 kubectl get pods
+```
 
-
+------------------------------------
 Task 3: Setup Load Balancer Service
 -----------------------------------
-nano game-svc.yaml 
-
+```
+vi game-svc.yaml 
+```
+```
 apiVersion: v1
 kind: Service
 metadata:
@@ -191,28 +214,39 @@ spec:
      port: 80
      targetPort: 80
    type: LoadBalancer
+```
 
-# apply the config file
+Apply the config file
+```
 kubectl apply -f game-svc.yaml
+```
 
-# View details of the modified service. 
+View details of the modified service. 
+```
 kubectl describe svc game-svc
-# The above command will take a few minutes before it can give corect output
+```
+The above command will take a few minutes before it can give corect output
 
-# Go to EC2 dashboard, click on Loadbalancer. select the load balancer.
-# Copy the DNS name and paste it into address bar of your browser. 
+Go to EC2 dashboard, click on Loadbalancer. select the load balancer.
 
-# Now, you will be able to see the 2048 game and will be able to play it too.
+Copy the DNS name and paste it into address bar of your browser. 
 
+Now, you will be able to see the 2048 game and will be able to play it too.
 
+-------------------------------
 Task 4: Cleanup
----------------
-# Clean up all the resources created in the task
+------------------------------
+
+Clean up all the resources created in the task
+```
 kubectl delete -f game-svc.yaml
+```
+```
 kubectl delete -f 2048-pod.yaml
-
+```
+```
 kops delete cluster --name=kube102.k8s.local --yes
-
+```
 delete the bucket
 
 
