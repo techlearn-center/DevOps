@@ -258,7 +258,7 @@ kubectl delete -f 2048-pod.yaml
 ```
 kops delete cluster --name=kube102.k8s.local --yes
 ```
-delete the bucket
+delete the bucket manually from the console
 
 
 ################################################################
