@@ -98,7 +98,7 @@ aws s3 mb s3://$s3buck
 export KOPS_STATE_STORE=s3://$s3buck
 
 # Create the cluster with 2 worker nodes.
-kops create cluster --node-count=2 --master-size="t3.medium" --node-size="t3.medium" --master-volume-size=30 --node-volume-size=30 --zones=$az --name $clname --state=s3://$s3buck --vpc=vpc-yourvpcid
+kops create cluster --node-count=2 --master-size="t3.medium" --node-size="t3.medium" --master-volume-size=30 --node-volume-size=30 --zones=$az --name $clname --state=s3://$s3buck --vpc=$yourvpcid
 
 # Apply the specified cluster specifications to the cluster
 kops get cluster
