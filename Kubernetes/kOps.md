@@ -27,8 +27,8 @@ The Lab steps are given below:
 -------------------------------
 Task 1: Launch anchor EC2
 ------------------------------
-Open Ubuntu 22.04 EC2 instance.
-Port 22 to be opened.
+Create an Ubuntu 22.04 EC2 instance.
+Make sure Port 22 has been opened.
 
 Update hostname
 ```
