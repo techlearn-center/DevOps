@@ -58,6 +58,9 @@ read awsaccess
 echo "Enter AWS Secret Key:"
 read awssecret
 
+echo "Enter VPC ID: (ex: my-kube.k8s.local)"
+read vpc-yourvpcid
+
 echo "Enter Cluster Name: (ex: my-kube.k8s.local)"
 read clname
 
@@ -95,7 +98,7 @@ aws s3 mb s3://$s3buck
 export KOPS_STATE_STORE=s3://$s3buck
 
 # Create the cluster with 2 worker nodes.
-kops create cluster --node-count=2 --master-size="t3.medium" --node-size="t3.medium" --master-volume-size=30 --node-volume-size=30 --zones=$az --name $clname --state=s3://$s3buck
+kops create cluster --node-count=2 --master-size="t3.medium" --node-size="t3.medium" --master-volume-size=30 --node-volume-size=30 --zones=$az --name $clname --state=s3://$s3buck --vpc=vpc-yourvpcid
 
 # Apply the specified cluster specifications to the cluster
 kops get cluster
