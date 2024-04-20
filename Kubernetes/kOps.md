@@ -25,7 +25,7 @@ The Lab steps are given below:
 =============================================
 
 -------------------------------
-#### Task 1: Launch anchor EC2
+Task 1: Launch anchor EC2
 ------------------------------
 Open Ubuntu 22.04 EC2 instance.
 Port 22 to be opened.
@@ -124,12 +124,15 @@ OR
 ```
 
 Enter Access Key 
+
 xxxxxx
 
 and Secret Key
+
 yyyyyyy
 
 specify a cluster name. Ex:
+
 kube102.k8s.local
 
 AZ:us-east-1a (Enter any AZ of your choice)
@@ -170,7 +173,7 @@ kops validate cluster --wait 10m --count 3
 #### Note: If you need to stop the 3 ec2 instances created by the above process, go to auto scaling group console and change the min/max/desired numbers of the 2 associated ASGs to zero
 
 -------------------------------
-#### Task 2: create a Pod using YAML
+Task 2: create a Pod using YAML
 ------------------------------
 ```
 vi 2048-pod.yaml
