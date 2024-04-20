@@ -40,7 +40,7 @@ Install these utilities
 sudo apt update
 ```
 ```
-sudo apt install nano curl wget awscli -y
+sudo apt install curl wget awscli -y
 ```
 
 Create the script to set up the cluster
