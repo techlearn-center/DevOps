@@ -59,7 +59,7 @@ echo "Enter AWS Secret Key:"
 read awssecret
 
 echo "Enter VPC ID: (use the vpc  id for the kops instance already created from console)"
-read vpc-yourvpcid
+read yourvpcid
 
 echo "Enter Cluster Name: (ex: my-kube.k8s.local)"
 read clname
