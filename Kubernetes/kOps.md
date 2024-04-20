@@ -302,7 +302,14 @@ Clean up all the resources created in the task
 kubectl delete -f game-svc.yaml
 ```
 ```
+kubectl delete -f tetris-svc.yaml
+```
+
+```
 kubectl delete -f 2048-pod.yaml
+```
+```
+kubectl delete -f tetris.yaml
 ```
 ```
 kops delete cluster --name=<cluster-name>.k8s.local --yes
