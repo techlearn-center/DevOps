@@ -24,8 +24,9 @@ The Lab steps are given below:
 ### Lab 1: Launch Kubernetes Cluster in AWS (EC2)
 =============================================
 
+-------------------------------
 #### Task 1: Launch anchor EC2
------------------------
+------------------------------
 Open Ubuntu 22.04 EC2 instance.
 Port 22 to be opened.
 
@@ -122,12 +123,13 @@ OR
 ./install-kops-tool.sh
 ```
 
-# Enter Access Key 
+Enter Access Key 
 xxxxxx
-#and Secret Key
+
+and Secret Key
 yyyyyyy
 
-# specify a cluster name. Ex:
+specify a cluster name. Ex:
 kube102.k8s.local
 
 AZ:us-east-1a (Enter any AZ of your choice)
@@ -147,22 +149,28 @@ Get the cluster list
 kops get cluster
 ```
 
-# Export a kubeconfig file for a cluster from the state store using cluster admin user. By default, 
-# the configuration will be saved into a users $HOME/.kube/config file.
+Export a kubeconfig file for a cluster from the state store using cluster admin user. 
+
+By default, the configuration will be saved into a users $HOME/.kube/config file.
+```
 kops export kubecfg --admin
+```
 
-# validate cluster creation. It may take 10+ minutes for cluster creation
+validate cluster creation. It may take 10+ minutes for cluster creation
+```
 kops validate cluster
+```
 Or
+```
 kops validate cluster --wait 10m --count 3
+```
 
-# Go to aws EC2 dashboard and confirm that the master node + 2 worker nodes exist
+#### Go to aws EC2 dashboard and confirm that the master node + 2 worker nodes exist
 
-# Note: If you need to stop the 3 ec2 instances created by the above process, go to auto scaling 
-# group console and change the min/max/desired numbers of the 2 associated ASGs to zero
+#### Note: If you need to stop the 3 ec2 instances created by the above process, go to auto scaling group console and change the min/max/desired numbers of the 2 associated ASGs to zero
 
-
-Task 2: create a Pod using YAML
+-------------------------------
+#### Task 2: create a Pod using YAML
 ------------------------------
 ```
 vi 2048-pod.yaml
