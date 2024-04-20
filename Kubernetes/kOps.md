@@ -3,8 +3,9 @@
 ############################################################################################
 
 ======================================================================
-### kOps
+## kOps
 ======================================================================
+
 Kubernetes provides excellent container orchestration, but setting up a Kubernetes cluster from scratch 
 can be painful. One solution is to use Kubernetes Operations, or kOps.
 
@@ -33,7 +34,7 @@ Update hostname
 sudo hostnamectl set-hostname kubernetes
 ```
 
-### Install these utilities
+Install these utilities
 ```
 sudo apt update
 ```
@@ -41,10 +42,13 @@ sudo apt update
 sudo apt install nano curl wget awscli -y
 ```
 
-### create the script to set up the cluster
+Create the script to set up the cluster
+```
 vi install-kops-tool.sh
+```
 
 ### Start of code ###
+```
 #!/bin/bash
 
 echo "Enter AWS Access Key:"
@@ -95,6 +99,7 @@ kops update cluster $clname --yes
 
 # The .bashrc file is a script file that’s executed when a user logs in. 
 echo "export KOPS_STATE_STORE=s3://$clname" >> .bashrc
+```
 
 ### End of code ###
 
