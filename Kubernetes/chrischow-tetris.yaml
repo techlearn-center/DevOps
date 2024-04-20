@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: tetris-pod
+   labels:
+      app: tetris
+spec:
+   containers:
+   - name: tetris-container
+     image: bsord/tetris
+     ports:
