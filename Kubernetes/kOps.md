@@ -208,7 +208,29 @@ list the newly created pod
 ```
 kubectl get pods
 ```
+Let's create another pod called the tetris pod
 
+```
+vi tetris.yaml
+```
+```
+apiVersion: v1
+kind: Pod
+metadata:
+   name: tetris
+   labels:
+      app: tetris
+spec:
+   containers:
+   - name: tetris
+     image: bsord/tetris
+     ports:
+       - containerPort: 80
+
+```
+```
+kubectl apply -f tetris.yaml
+```
 ------------------------------------
 Task 3: Setup Load Balancer Service
 -----------------------------------
@@ -231,6 +253,30 @@ spec:
 ```
 
 Apply the config file
+```
+kubectl apply -f game-svc.yaml
+```
+
+```
+vi tetris-svc.yaml
+```
+
+```
+apiVersion: v1
+kind: Service
+metadata:
+   name: tetris-svc
+spec:
+   selector:
+      app: tetris
+   ports:
+   - protocol: TCP
+     port: 80
+     targetPort: 80
+   type: LoadBalancer
+
+```
+Apply the svc config file
 ```
 kubectl apply -f game-svc.yaml
 ```
