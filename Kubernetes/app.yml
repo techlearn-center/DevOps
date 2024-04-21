@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: vproapp
-        image: visualpath/vpromultiapp
+        image: techlearn2024/cicd
         ports:
         - name: vproapp-port
           containerPort: 8080
