@@ -28,20 +28,14 @@ The Lab steps are given below:
 Task 1: Launch anchor EC2
 ------------------------------
 Create an Ubuntu 22.04 EC2 instance using the terraform scripts in this folder (https://github.com/techlearn-center/DevOps/tree/CICD/Kubernetes/terraform-ubuntu-ec2).
+
 Make sure Port 22 has been opened.
 
-Update hostname
+Update hostname (optional)
 ```
 sudo hostnamectl set-hostname kubernetes
 ```
 
-Install these utilities
-```
-sudo apt update
-```
-```
-sudo apt install curl wget awscli -y
-```
 
 Create the script to set up the cluster
 ```
