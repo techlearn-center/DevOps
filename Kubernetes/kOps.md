@@ -52,36 +52,74 @@ Copy and paste below script in the vi editor. Make sure to save it (:wq)
 ```
 #!/bin/bash
 
-echo "Enter AWS Access Key:"
-read awsaccess
+# Function to get user input with a verification loop
+get_input() {
+    local prompt=$1
+    local varname=$2
+    local input
 
-echo "Enter AWS Secret Key:"
-read awssecret
+    while true; do
+        echo
+        echo "$prompt"
+        read input
+        echo "You entered: $input"
+        echo "Is this correct? (yes/no)"
+        read confirmation
+        if [[ $confirmation == "yes" ]]; then
+            eval $varname="'$input'"
+            break
+        else
+            echo "Please re-enter the information."
+        fi
+    done
+}
 
-echo "Enter VPC ID: (use the vpc  id for the kops instance already created from console)"
-read yourvpcid
+# Start of the script logic
+get_input "Enter AWS Access Key:" awsaccess
+get_input "Enter AWS Secret Key:" awssecret
+get_input "Enter VPC ID: (use the VPC ID for the kops instance already created from console)" yourvpcid
+get_input "Enter Cluster Name: (ex: my-kube.k8s.local)" clname
+get_input "Enter S3 bucket name: (ex: my-kube-k8s-local)" s3buck
+get_input "Enter an AZ for the cluster:" az
 
-echo "Enter Cluster Name: (ex: my-kube.k8s.local)"
-read clname
+# Output the entered information (optional, for verification)
+echo
+echo "AWS Access Key: $awsaccess"
+echo "AWS Secret Key: $awssecret"
+echo "VPC ID: $yourvpcid"
+echo "Cluster Name: $clname"
+echo "S3 Bucket Name: $s3buck"
+echo "AZ for the cluster: $az"
+echo
 
-echo "Enter S3 bucket name: (ex: my-kube-k8s-local)"
-read s3buck
 
-echo "Enter an AZ for the cluster:"
-read az
-
+# Install required packages and utilities
 sudo apt update
 
-# download kubectl; give execute permission; move to binary path
+sudo apt install curl wget awscli -y
+
+# Ensure the necessary tools are installed
+if ! command -v aws >/dev/null 2>&1; then
+    echo "AWS CLI is not installed. Please install it first."
+    exit 1
+fi
+
+if ! command -v kops >/dev/null 2>&1; then
+    echo "kops is not installed. Please install it first."
+    exit 1
+fi
+
+
+# Download kubectl, give execute permission, and move to binary path
 curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.25.0/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
-# download kOps
-sudo curl -LO https://github.com/kubernetes/kops/releases/download/v1.25.0/kops-linux-amd64
+# Download kOps
+curl -LO https://github.com/kubernetes/kops/releases/download/v1.25.0/kops-linux-amd64
 
 # Give executable permission to the downloaded kOps file and move it to binary path
-sudo chmod +x kops-linux-amd64
+chmod +x kops-linux-amd64
 sudo mv kops-linux-amd64 /usr/local/bin/kops
 
 # Configure your AWS user profile
@@ -89,7 +127,11 @@ aws configure set aws_access_key_id $awsaccess
 aws configure set aws_secret_access_key $awssecret
 
 # Create a key which can be used by kOps for cluster login
-ssh-keygen -N "" -f $HOME/.ssh/id_rsa
+if [ ! -f $HOME/.ssh/id_rsa ]; then
+    ssh-keygen -N "" -f $HOME/.ssh/id_rsa
+else
+    echo "SSH key already exists. Skipping creation."
+fi
 
 # Create an S3 Bucket where kOps will save all the cluster's state information.
 aws s3 mb s3://$s3buck
@@ -105,7 +147,7 @@ kops get cluster
 kops update cluster $clname --yes --state=s3://$s3buck
 
 # The .bashrc file is a script file that’s executed when a user logs in.
-echo "export KOPS_STATE_STORE=s3://$s3buck" >> .bashrc
+echo "export KOPS_STATE_STORE=s3://$s3buck" >> ~/.bashrc
 ```
 
 Run the script to setup and configure the Kubernetes cluster. 
