@@ -1,9 +1,9 @@
 ############################################################################################
-# Deploy An Application On A Kuberenetes Cluster That Has Been Set up Using KOps.
+## Deploy An Application On A Kuberenetes Cluster That Has Been Set up Using KOps.
 ############################################################################################
 
 ======================================================================
-## kOps
+### kOps
 ======================================================================
 
 Kubernetes provides excellent container orchestration, but setting up a Kubernetes cluster from scratch 
