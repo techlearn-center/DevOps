@@ -293,6 +293,10 @@ Copy the DNS name and paste it into address bar of your browser.
 
 Now, you will be able to see the 2048 game and will be able to play it too.
 
+Do same for the tetris game as well.
+
+##### Congratulations, you have been able to deploy two applications on kubernetes cluster!!!!
+
 -------------------------------
 Task 4: Cleanup
 ------------------------------
