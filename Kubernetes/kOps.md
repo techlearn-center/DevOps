@@ -27,7 +27,7 @@ The Lab steps are given below:
 -------------------------------
 Task 1: Launch anchor EC2
 ------------------------------
-Create an Ubuntu 22.04 EC2 instance using the terraform scripts in this folder ().
+Create an Ubuntu 22.04 EC2 instance using the terraform scripts in this folder (https://github.com/techlearn-center/DevOps/tree/CICD/Kubernetes/terraform-ubuntu-ec2).
 Make sure Port 22 has been opened.
 
 Update hostname
