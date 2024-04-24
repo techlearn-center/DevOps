@@ -1,4 +1,4 @@
-# This script assumes you already have a vpc and security group created in your account
+# This script assumes you already have a vpc, key-pair and security group created in your account
 
 #############################
 # Data Sources
