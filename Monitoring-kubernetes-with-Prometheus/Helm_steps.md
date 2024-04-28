@@ -67,7 +67,6 @@ kubectl get secret --namespace default grafana -o jsonpath="{.data.admin-passwor
 
 ----------------------------------------------------------
 
-Dashboards: 
-https://grafana.com/grafana/dashboards/6417
-https://grafana.com/grafana/dashboards/3662
-Prometheus Playlist: https://www.youtube.com/playlist?list=PLVx1qovxj-anCTn6um3BDsoHnIr0O2tz3
+Here are Grafana dashboard templates that you can import: 
+- [6417][https://grafana.com/grafana/dashboards/6417]
+- [3662][https://grafana.com/grafana/dashboards/3662]
