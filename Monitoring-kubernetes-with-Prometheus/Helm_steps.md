@@ -16,6 +16,10 @@ helm repo update
 ```
 helm install prometheus prometheus-community/prometheus
 ```
+```
+kubectl get all
+```
+
 Now to make the service, which is normally only accessible within the cluster, available outside, we will be exposing it on each node's IP at a specific port. This can be helpful for accessing the service from external systems or for debugging purposes.
 
 By running below command, Kubernetes creates a new service object that routes external traffic coming to each node on a specific port (assigned by Kubernetes if not specified) to the port 9090 on the pods selected by the original service prometheus-kube-prometheus-prometheus. This makes the Prometheus server accessible from outside the cluster.
@@ -25,9 +29,6 @@ kubectl expose service prometheus-kube-prometheus-prometheus --type=NodePort --t
 ```
 
 
-```
-kubectl get all
-```
 To find out which node the prometheus-kube-prometheus pod is scheduled on, use the following command:
 ```
 kubectl get pods -o wide|grep prometheus-prometheus-kube-prometheus-prometheus-0|awk '{print  $7}'
@@ -37,8 +38,13 @@ kubectl get pods -o wide|grep prometheus-prometheus-kube-prometheus-prometheus-0
 - Additionally, make sure to edit the security group to allow traffic on the port that Grafana is listening on. 
 
 - To find out which port Prometheus is using, you can use the following command:
+prometheus-server-ext
 
-#### This will help you know the node (ip) to access the prometheus. 
+```
+echo $(kubectl get svc prometheus-server-ext -o=jsonpath='{.spec.ports[0].nodePort}')
+```
+- You can now access Grafana by opening your browser and entering the IP address and port in the format IP:Port. For example, use http://3.93.10.212:32531/ where 3.93.10.212 is the IP of the EC2 instance where your Grafana pod is scheduled, and 32531 is the NodePort used for accessing Grafana.
+
 
 
 Steps to install Grafana:
