@@ -16,6 +16,10 @@ helm repo update
 ```
 helm install prometheus prometheus-community/prometheus
 ```
+Now to make the service, which is normally only accessible within the cluster, available outside, we will be exposing it on each node's IP at a specific port. This can be helpful for accessing the service from external systems or for debugging purposes.
+
+By running below command, Kubernetes creates a new service object that routes external traffic coming to each node on a specific port (assigned by Kubernetes if not specified) to the port 9090 on the pods selected by the original service prometheus-kube-prometheus-prometheus. This makes the Prometheus server accessible from outside the cluster.
+
 ```
 kubectl expose service prometheus-kube-prometheus-prometheus --type=NodePort --target-port=9090 --name=prometheus-server-ext
 ```
