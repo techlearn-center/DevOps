@@ -1,3 +1,7 @@
+Since this Prometheus instance is designed to monitor a Kubernetes cluster, you must first provision the cluster using kOps. You can find the detailed instructions [here](https://github.com/techlearn-center/DevOps/blob/CICD/Kubernetes/kOps.md) . 
+
+After the cluster is provisioned, follow the steps outlined below to install Prometheus and Grafana:
+
 Steps to Install Prometheus:
 --------------------------------
 ```
