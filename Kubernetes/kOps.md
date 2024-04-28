@@ -92,6 +92,18 @@ sudo apt update
 
 sudo apt install curl wget awscli -y
 
+# Download kubectl, give execute permission, and move to binary path
+curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.25.0/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+
+# Download kOps
+sudo curl -LO https://github.com/kubernetes/kops/releases/download/v1.25.0/kops-linux-amd64
+
+# Give executable permission to the downloaded kOps file and move it to binary path
+chmod +x kops-linux-amd64
+sudo mv kops-linux-amd64 /usr/local/bin/kops
+
 # Ensure the necessary tools are installed
 if ! command -v aws >/dev/null 2>&1; then
     echo "AWS CLI is not installed. Please install it first."
@@ -104,17 +116,6 @@ if ! command -v kops >/dev/null 2>&1; then
 fi
 
 
-# Download kubectl, give execute permission, and move to binary path
-curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.25.0/bin/linux/amd64/kubectl
-chmod +x ./kubectl
-sudo mv ./kubectl /usr/local/bin/kubectl
-
-# Download kOps
-curl -LO https://github.com/kubernetes/kops/releases/download/v1.25.0/kops-linux-amd64
-
-# Give executable permission to the downloaded kOps file and move it to binary path
-chmod +x kops-linux-amd64
-sudo mv kops-linux-amd64 /usr/local/bin/kops
 
 # Configure your AWS user profile
 aws configure set aws_access_key_id $awsaccess
