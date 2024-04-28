@@ -27,21 +27,43 @@ http://IP:port ( port of prometheus-server-ext svc)
 
 Steps to install Grafana:
 --------------------------
-
+```
 helm repo add grafana https://grafana.github.io/helm-charts
+```
+```
 helm repo update
+```
+```
 helm install grafana stable/grafana
+```
+```
 kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-ext
-minikube service grafana-ext
+```
 
-To get user name and password in Grafana:
+To know which node the Grafana pod is scheduled on, use below command 
+```
+kubectl get pods -o wide | grep 'grafana' | grep -v 'prometheus' | awk '{print  $7}'
+```
+- Now that you have the node name, navigate to your EC2 dashboard, search for that specific EC2 instance, and note its IP address. 
 
-kubectl get secret --namespace default grafana -o yaml
-echo "RkpwY21aTFNXRDVJN3Z4RWFFUjlibkV1SDBDbnFBendadmc0bmROZQ==" | openssl base64 -d ; echo
+- Additionally, make sure to edit the security group to allow traffic on the port that Grafana is listening on. 
 
+- To find out which port Grafana is using, you can use the following command:
+```
+kubectl get svc |grep grafana-ext|awk '{print $5}'|cut -d":" -f2|cut -d"/" -f1
+```
 or 
+```
+echo $(kubectl get svc grafana-ext -o=jsonpath='{.spec.ports[0].nodePort}')
+```
+- You can now access Grafana by opening your browser and entering the IP address and port in the format IP:Port. For example, use http://3.93.10.212:32531/ where 3.93.10.212 is the IP of the EC2 instance where your Grafana pod is scheduled, and 32531 is the NodePort used for accessing Grafana.
 
+- Your Grafana dashboard is now operational. To access it, please enter the username and password. To retrieve these credentials, use the following command:
+
+```
 kubectl get secret --namespace default grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+```
+
 
 ----------------------------------------------------------
 
