@@ -68,5 +68,5 @@ kubectl get secret --namespace default grafana -o jsonpath="{.data.admin-passwor
 ----------------------------------------------------------
 
 Here are Grafana dashboard templates that you can import: 
-- [6417][https://grafana.com/grafana/dashboards/6417]
-- [3662][https://grafana.com/grafana/dashboards/3662]
+- [Dashboard 6417](https://grafana.com/grafana/dashboards/6417)
+- [Dashboard 3662](https://grafana.com/grafana/dashboards/3662)
