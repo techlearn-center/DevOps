@@ -181,7 +181,7 @@ Set S3 bucket environment variable. Bucket name will be same as the name of clus
 
 export KOPS_STATE_STORE=s3://< Cluster-Name >
 
-Ex:
+Example (if your s3 bucket name is s3://kube102-k8s-local) :
 ```
 export KOPS_STATE_STORE=s3://kube102-k8s-local
 ```
