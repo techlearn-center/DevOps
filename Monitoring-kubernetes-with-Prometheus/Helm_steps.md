@@ -20,16 +20,23 @@ helm install prometheus prometheus-community/prometheus
 kubectl get all
 ```
 
-Now to make the service, which is normally only accessible within the cluster, available outside, we will be exposing it on each node's IP at a specific port. This can be helpful for accessing the service from external systems or for debugging purposes.
+- Now to make the service, which is normally only accessible within the cluster, available outside, we will be exposing it on each node's IP at a specific port. This can be helpful for accessing the service from external systems or for debugging purposes.
 
-By running below command, Kubernetes creates a new service object that routes external traffic coming to each node on a specific port (assigned by Kubernetes if not specified) to the port 9090 on the pods selected by the original service prometheus-kube-prometheus-prometheus. This makes the Prometheus server accessible from outside the cluster.
+- By running below command, Kubernetes creates a new service object that routes external traffic coming to each node on a specific port (assigned by Kubernetes if not specified) to the port 9090 on the pods selected by the original service prometheus-kube-prometheus-prometheus. This makes the Prometheus server accessible from outside the cluster.
 
 ```
 kubectl expose service prometheus-kube-prometheus-prometheus --type=NodePort --target-port=9090 --name=prometheus-server-ext
 ```
 
+Alternatively, to assign your own specific NodePort instead of allowing Kubernetes to automatically assign one, you can use the --node-port option in addition to the command above. This option allows you to specify the exact port on the node's network interface where the service will be exposed. 
 
-To find out which node the prometheus-kube-prometheus pod is scheduled on, use the following command:
+However, you need to ensure that the port you choose is within the allowable range configured on your Kubernetes cluster (typically 30000-32767 for NodePort services, but this can vary based on your cluster's configuration).
+
+```
+kubectl expose service prometheus-kube-prometheus-prometheus --type=NodePort --port=9090 --target-port=9090 --name=prometheus-server-ext --node-port=32000
+```
+
+- To find out which node the prometheus-kube-prometheus pod is scheduled on, use the following command:
 ```
 kubectl get pods -o wide|grep prometheus-prometheus-kube-prometheus-prometheus-0|awk '{print  $7}'
 ```
