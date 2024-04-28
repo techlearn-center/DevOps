@@ -17,16 +17,24 @@ helm repo update
 helm install prometheus prometheus-community/prometheus
 ```
 ```
-kubectl get all
-```
-To know which node the prometheus-kube-prometheus is scheduled on :
-```
-kubectl get pods -o wide 
+kubectl expose service prometheus-kube-prometheus-prometheus --type=NodePort --target-port=9090 --name=prometheus-server-ext
 ```
 
+
+```
+kubectl get all
+```
+To find out which node the prometheus-kube-prometheus pod is scheduled on, use the following command:
+```
+kubectl get pods -o wide|grep prometheus-prometheus-kube-prometheus-prometheus-0|awk '{print  $7}'
+```
+- Now that you have the node name, navigate to your EC2 dashboard, search for that specific EC2 instance, and note its IP address. 
+
+- Additionally, make sure to edit the security group to allow traffic on the port that Grafana is listening on. 
+
+- To find out which port Prometheus is using, you can use the following command:
+
 #### This will help you know the node (ip) to access the prometheus. 
-kubectl expose service prometheus-kube-prometheus-prometheus --type=NodePort --target-port=9090 --name=prometheus-server-ext
-http://IP:port ( port of prometheus-server-ext svc)
 
 
 Steps to install Grafana:
