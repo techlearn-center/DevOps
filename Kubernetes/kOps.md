@@ -35,7 +35,7 @@ Update hostname (optional)
 ```
 sudo hostnamectl set-hostname kubernetes
 ```
-
+To apply the change and see the new hostname, exit the current SSH session and then reconnect to the server.
 
 Create the script to set up the cluster
 ```
