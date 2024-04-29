@@ -5,7 +5,7 @@
 
 Download the binaries, extract it and put it in /usr/local/bin/helm.
 
-Change the directory to /tmp:
+Change the directory to /tmp (this directory is designed for temporary file storage. Since it's often used for intermediate files during software installation or processes that don't require long-term storage,it's a convenient place to download and unpack binaries that you might not need to keep permanently):
 ```
 cd /tmp
 ```
