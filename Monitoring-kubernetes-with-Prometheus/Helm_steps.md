@@ -35,10 +35,10 @@ After the cluster is provisioned and helm installed, follow the steps outlined b
 Steps to Install Prometheus:
 --------------------------------
 ```
-helm search repo prometheus
-```
-```
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+```
+```
+helm search repo prometheus
 ```
 ```
 helm repo update
