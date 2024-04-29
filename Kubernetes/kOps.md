@@ -359,5 +359,12 @@ delete the bucket manually from the console
 
 
 ################################################################
+#### Errors you might encounter and how to resolve:
+- E: Package 'awscli' has no installation candidate
 
+The error message "E: Package 'awscli' has no installation candidate" typically indicates that the package you are trying to install is not available in the repository list that your system knows about or the package name might be incorrect. Here’s how to resolve this issue and successfully install the AWS CLI (Command Line Interface) on an Ubuntu system:
 
+--Update Your Package List
+```
+sudo apt update
+``
