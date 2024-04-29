@@ -1,6 +1,36 @@
-Since this Prometheus instance is designed to monitor a Kubernetes cluster, you must first provision the cluster using kOps. You can find the detailed instructions [here](https://github.com/techlearn-center/DevOps/blob/CICD/Kubernetes/kOps.md) . 
+## Prerequisites
+- Since this Prometheus instance is designed to monitor a Kubernetes cluster, you must first provision the cluster using kOps. You can find the detailed instructions [here](https://github.com/techlearn-center/DevOps/blob/CICD/Kubernetes/kOps.md) . 
 
-After the cluster is provisioned, follow the steps outlined below to install Prometheus and Grafana:
+- Installing and configuring Helm:
+
+Download the binaries, extract it and put it in /usr/local/bin/helm.
+
+Change the directory to /tmp:
+```
+cd /tmp
+```
+To install the binaries, download them using the following command:
+```
+wget https://get.helm.sh/helm-v3.14.4-linux-amd64.tar.gz
+```
+
+Extract the binary with the following command:
+```
+tar xzvf  helm-v3.14.4-linux-amd64.tar.gz
+```
+
+We now have the Helm binary, and we will move it to `/usr/local/bin/helm`.
+```
+sudo mv helm /usr/local/bin/helm
+```
+```
+cd
+```
+```
+helm --help
+```
+
+After the cluster is provisioned and helm installed, follow the steps outlined below to install Prometheus and Grafana:
 
 Steps to Install Prometheus:
 --------------------------------
