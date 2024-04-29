@@ -75,7 +75,7 @@ kubectl get pods -o wide|grep prometheus-prometheus-kube-prometheus-prometheus-0
 ```
 - Now that you have the node name, navigate to your EC2 dashboard, search for that specific EC2 instance, and note its IP address. 
 
-- Additionally, make sure to edit the security group to allow traffic on the port that Grafana is listening on. 
+- Additionally, make sure to edit the security group to allow traffic on the port that Prometheus is listening on. 
 
 - To find out which port Prometheus is using, you can use the following command:
 prometheus-server-ext
