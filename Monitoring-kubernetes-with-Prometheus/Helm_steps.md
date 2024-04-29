@@ -47,6 +47,9 @@ helm repo update
 helm install prometheus prometheus-community/prometheus
 ```
 ```
+helm list
+```
+```
 kubectl get all
 ```
 
