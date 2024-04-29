@@ -21,7 +21,7 @@ tar xzvf  helm-v3.14.4-linux-amd64.tar.gz
 
 We now have the Helm binary, and we will move it to `/usr/local/bin/helm`.
 ```
-sudo mv helm /usr/local/bin/helm
+sudo mv /tmp/linux-amd64/helm /usr/local/bin/helm
 ```
 ```
 cd
