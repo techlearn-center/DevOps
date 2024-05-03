@@ -369,6 +369,16 @@ The error message "E: Package 'awscli' has no installation candidate" typically 
 - Update Your Package List
 ```
 sudo apt update
-``
+```
 - Install Using the Correct Package Name
 For Ubuntu systems, especially newer versions, you should install the AWS CLI version 2, which might not be available directly via the default repositories and does not use the package name `awscli`. Instead, you'll need to download and install it using the official AWS method:
+```
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+```
+```
+unzip awscliv2.zip
+```
+Verify by running:
+```
+aws --version
+```
