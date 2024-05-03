@@ -192,7 +192,7 @@ Get the cluster list
 kops get cluster
 ```
 
-Export a kubeconfig file for a cluster from the state store using cluster admin user. 
+Export a kubeconfig file for a cluster from the state store using cluster admin user. Exporting the kubeconfig with administrative privileges using kops export kubecfg --admin is necessary because it grants kubectl the appropriate permissions to interact with the Kubernetes cluster.
 
 By default, the configuration will be saved into a users $HOME/.kube/config file.
 ```
