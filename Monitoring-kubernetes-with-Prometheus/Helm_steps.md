@@ -65,7 +65,7 @@ or use below depending on the service name you got
 kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-ext 
 ```
 
-###Alternatively, to assign your own specific NodePort instead of allowing Kubernetes to automatically assign one, you can use the --node-port option in addition to the command above. This option allows you to specify the exact port on the node's network interface where the service will be exposed. 
+#### Alternatively, to assign your own specific NodePort instead of allowing Kubernetes to automatically assign one, you can use the --node-port option in addition to the command above. This option allows you to specify the exact port on the node's network interface where the service will be exposed. 
 
 However, you need to ensure that the port you choose is within the allowable range configured on your Kubernetes cluster (typically 30000-32767 for NodePort services, but this can vary based on your cluster's configuration).
 
