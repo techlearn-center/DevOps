@@ -60,8 +60,12 @@ By running below command, Kubernetes creates a new service object that routes ex
 ```
 kubectl expose service prometheus-kube-prometheus-prometheus --type=NodePort --target-port=9090 --name=prometheus-server-ext
 ```
+or use below depending on the service name you got
+```
+kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-ext 
+```
 
-Alternatively, to assign your own specific NodePort instead of allowing Kubernetes to automatically assign one, you can use the --node-port option in addition to the command above. This option allows you to specify the exact port on the node's network interface where the service will be exposed. 
+###Alternatively, to assign your own specific NodePort instead of allowing Kubernetes to automatically assign one, you can use the --node-port option in addition to the command above. This option allows you to specify the exact port on the node's network interface where the service will be exposed. 
 
 However, you need to ensure that the port you choose is within the allowable range configured on your Kubernetes cluster (typically 30000-32767 for NodePort services, but this can vary based on your cluster's configuration).
 
@@ -73,6 +77,11 @@ kubectl expose service prometheus-kube-prometheus-prometheus --type=NodePort --p
 ```
 kubectl get pods -o wide|grep prometheus-prometheus-kube-prometheus-prometheus-0|awk '{print  $7}'
 ```
+or use below depending on the pod name (prometheus-server)
+```
+kubectl get pods -n prod -o wide|grep prometheus-server|awk '{print  $7}'
+```
+
 - Now that you have the node name, navigate to your EC2 dashboard, search for that specific EC2 instance, and note its IP address. 
 
 - Additionally, make sure to edit the security group to allow traffic on the port that Prometheus is listening on. 
