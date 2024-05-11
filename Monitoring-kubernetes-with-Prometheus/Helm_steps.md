@@ -139,6 +139,6 @@ All the above commands assume you are working in the default namespace
 
 ----------------------------------------------------------
 
-Here are Grafana dashboard templates that you can import: 
+Here are Grafana dashboard templates that you can import (just use the IDs): 
 - [Dashboard 6417](https://grafana.com/grafana/dashboards/6417)
 - [Dashboard 3662](https://grafana.com/grafana/dashboards/3662)
