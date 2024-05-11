@@ -132,9 +132,10 @@ echo $(kubectl get svc grafana-ext -o=jsonpath='{.spec.ports[0].nodePort}')
 - Your Grafana dashboard is now operational. To access it, please enter the username and password. To retrieve these credentials, use the following command:
 
 ```
-kubectl get secret --namespace default grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+kubectl get secret  grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 ```
 
+All the above commands assume you are working in the default namespace
 
 ----------------------------------------------------------
 
