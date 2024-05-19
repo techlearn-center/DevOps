@@ -18,11 +18,11 @@ sudo systemctl enable httpd
 
 # Create a temporary directory for the website files
 echo "Creating a temporary directory for the website files..."
-sudo mkdir -p /tmp/finance
+sudo mkdir -p /tmp/barista
 
 # Change to the temporary directory
 echo "Changing to the temporary directory..."
-cd /tmp/finance
+cd /tmp/barista
 
 # Download the Barista Cafe website template
 echo "Downloading the Barista Cafe website template..."
@@ -43,7 +43,7 @@ sudo systemctl restart httpd
 # Clean up by removing the temporary directory
 echo "Cleaning up by removing the temporary directory..."
 cd /tmp
-sudo rm -rf /tmp/finance
+sudo rm -rf /tmp/barista
 
 echo " "
 echo "Deployment of Barista Cafe website completed successfully."
