@@ -385,4 +385,4 @@ Verify by running:
 ```
 aws --version
 ```
-or just run this script [aws-cli script here](https://github.com/techlearn-center/DevOps/blob/CICD/Kubernetes/aws-cli.sh)
+or just run this script [aws-cli script here](https://github.com/techlearn-center/DevOps/blob/CICD/Kubernetes/aws-cli.sh) to automate the process without having to run the commands one after the other.
