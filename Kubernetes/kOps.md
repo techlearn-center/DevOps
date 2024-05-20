@@ -378,7 +378,11 @@ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip
 ```
 unzip awscliv2.zip
 ```
+```
+sudo ./aws/install
+```
 Verify by running:
 ```
 aws --version
 ```
+or just run this script [aws-cli script here](https://github.com/techlearn-center/DevOps/blob/CICD/Kubernetes/aws-cli.sh)
