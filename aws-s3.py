@@ -24,3 +24,9 @@ fileToUpload = "2136_kool_form_pack.zip"
 fileToS3 = filePath + fileToUpload
 s3.upload_file(fileToS3, BUCKETNAME, fileToUpload)
 print(f"S3 bucket '{BUCKETNAME}' created successfully in region '{region}'")
+
+# Download File from S3 Bucket
+downloadFile = "downloaded_zip_file"
+s3.download_file(BUCKETNAME, fileToUpload, downloadFile)
+
+print(f"File '{fileToUpload}' downloaded from S3 bucket '{BUCKETNAME}' as '{downloadFile}'")
