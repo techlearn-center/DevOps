@@ -1,4 +1,6 @@
 #!/bin/bash
+
+
 # This script automates the process of updating you php config file with a randomiser that returns completely random keys each time it is opened.
 #This step is important to ensure that your site is not vulnerable to “known secrets” attacks.
 #Found in step 6 of [https://ubuntu.com/tutorials/install-and-configure-wordpress#6-configure-wordpress-to-connect-to-the-database](6-configure-wordpress-to-connect-to-the-database)
