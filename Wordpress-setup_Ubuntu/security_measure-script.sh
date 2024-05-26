@@ -20,6 +20,9 @@ if [ ! -f "$TARGET_FILE" ]; then
   exit 1
 fi
 
+# Backup the existing wp-config.php file
+cp $TARGET_FILE $TARGET_FILE.bak
+
 # Define the markers to identify the lines to be replaced
 START_MARKER="define('AUTH_KEY',"
 END_MARKER="define('NONCE_SALT',"
