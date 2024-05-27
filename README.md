@@ -6,12 +6,12 @@
 - Google Cloud Client Libraries for Python
 - Azure SDK for Python
 - Django
-Flask
-FastAPI
-os and sys
-requests
-Fabrics
-PyYAML
-JSON
-psutil
-Jinja2
+- Flask
+- FastAPI
+- os and sys
+- requests
+- Fabrics
+- PyYAML
+- JSON
+- psutil
+- Jinja2
