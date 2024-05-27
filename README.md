@@ -47,8 +47,8 @@
 Learning Python is easy but same time there is chance of missing the proper learning track. So, to learn Python programming or Programming with Python, you must follow a proper tutorial.You can learn Python using below syllabus/Python Course Content.
 
 1. Python Fundamentals:
-Introduction to Python:Cover the basics of Python syntax, data types (strings, integers, lists, dictionaries), variables, operators, and control flow statements (if/else, for loops, while loops).
-Functions and Modules: Explain how to define and use functions for code reusability, explore built-in modules (like os, sys, json) and introduce package management with pip.
-Command Line Interface (CLI) Scripting:write Python scripts that interact with the operating system using the os module, automate tasks like file manipulation, process execution, and environment variable management.
-Version Control with Git: Integrate Git version control basics into the course, demonstrating how to manage Python scripts and DevOps configurations using Git commands.
-Configuration Management with Python: Introduce tools like Ansible or SaltStack that leverage Python for infrastructure and application configuration management.
+- Introduction to Python:Cover the basics of Python syntax, data types (strings, integers, lists, dictionaries), variables, operators, and control flow statements (if/else, for loops, while loops).
+- Functions and Modules: Explain how to define and use functions for code reusability, explore built-in modules (like os, sys, json) and introduce package management with pip.
+- Command Line Interface (CLI) Scripting:write Python scripts that interact with the operating system using the os module, automate tasks like file manipulation, process execution, and environment variable management.
+- Version Control with Git: Integrate Git version control basics into the course, demonstrating how to manage Python scripts and DevOps configurations using Git commands.
+- Configuration Management with Python: Introduce tools like Ansible or SaltStack that leverage Python for infrastructure and application configuration management.
