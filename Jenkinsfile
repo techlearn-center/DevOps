@@ -7,11 +7,11 @@ pipeline {
     }
 */
     environment {
-        registry = "techlearn2024/cicd"
+        registry = "Nii-Laryea7/cicd"
         registryCredential = 'dockerhub'
     }
 
-    stages{
+    A stages{
 
         stage('BUILD'){
             steps {
@@ -25,19 +25,19 @@ pipeline {
             }
         }
 
-        stage('UNIT TEST'){
+        B stage('UNIT TEST'){
             steps {
                 sh 'mvn test'
             }
         }
 
-        stage('INTEGRATION TEST'){
+        C stage('INTEGRATION TEST'){
             steps {
                 sh 'mvn verify -DskipUnitTests'
             }
         }
 
-        stage ('CODE ANALYSIS WITH CHECKSTYLE'){
+        D stage ('CODE ANALYSIS WITH CHECKSTYLE'){
             steps {
                 sh 'mvn checkstyle:checkstyle'
             }
@@ -48,7 +48,7 @@ pipeline {
             }
         }
 
-        stage('CODE ANALYSIS with SONARQUBE') {
+        E stage('CODE ANALYSIS with SONARQUBE') {
 
             environment {
                 scannerHome = tool 'mysonarscanner4'
@@ -72,7 +72,7 @@ pipeline {
             }
         }
 
-        stage('Build App Image') {
+       F stage('Build App Image') {
           steps {
             script {
               dockerImage = docker.build registry + ":V$BUILD_NUMBER"
@@ -80,7 +80,7 @@ pipeline {
           }
         }
 
-        stage('Upload Image'){
+       G stage('Upload Image'){
           steps{
             script {
               docker.withRegistry('', registryCredential) {
@@ -91,13 +91,13 @@ pipeline {
           }
         }
 
-        stage('Remove Unused docker image') {
+       H stage('Remove Unused docker image') {
           steps{
             sh "docker rmi $registry:V$BUILD_NUMBER"
           }
         }
 
-        stage('Kubernetes Deploy') {
+       I stage('Kubernetes Deploy') {
           agent {label 'KOPS'}
             steps {
               sh "helm upgrade --install --force vprofile-stack helm/vprofilecharts --set appimage=${registry}:V${BUILD_NUMBER} --namespace prod"
