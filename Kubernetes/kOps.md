@@ -3,7 +3,7 @@
 ############################################################################################
 
 ======================================================================
-### kOps
+### kOps.
 ======================================================================
 
 Kubernetes provides excellent container orchestration, but setting up a Kubernetes cluster from scratch 
@@ -361,7 +361,7 @@ delete the bucket manually from the console
 Congratulations you are done with this 
 ######################################################################################################################
 
-#### Errors you might encounter and how to resolve:
+### Errors you might encounter and how to resolve:
 - E: Package 'awscli' has no installation candidate
 
 The error message "E: Package 'awscli' has no installation candidate" typically indicates that the package you are trying to install is not available in the repository list that your system knows about or the package name might be incorrect. Here’s how to resolve this issue and successfully install the AWS CLI (Command Line Interface) on an Ubuntu system:
@@ -378,7 +378,11 @@ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip
 ```
 unzip awscliv2.zip
 ```
+```
+sudo ./aws/install
+```
 Verify by running:
 ```
 aws --version
 ```
+or just run this script [aws-cli script here](https://github.com/techlearn-center/DevOps/blob/CICD/Kubernetes/aws-cli.sh) to automate the process without having to run the commands one after the other.
