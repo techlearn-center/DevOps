@@ -15,7 +15,8 @@ pipeline {
 
         stage('A-BUILD'){
             steps {
-                sh 'mvn clean install -DskipTests'
+                sh 'mvn clean install -U'
+		sh 'mvn clean install -DskipTests'
             }
             post {
                 success {
