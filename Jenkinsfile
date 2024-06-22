@@ -7,13 +7,13 @@ pipeline {
     }
 */
     environment {
-        registry = "techlearn2024/cicd"
+        registry = "niilaryea77/cicd"
         registryCredential = 'dockerhub'
     }
 
     stages{
 
-        stage('BUILD'){
+        stage('A-BUILD'){
             steps {
                 sh 'mvn clean install -DskipTests'
             }
@@ -25,19 +25,19 @@ pipeline {
             }
         }
 
-        stage('UNIT TEST'){
+        stage('B-UNIT TEST'){
             steps {
                 sh 'mvn test'
             }
         }
 
-        stage('INTEGRATION TEST'){
+        stage('C-INTEGRATION TEST'){
             steps {
                 sh 'mvn verify -DskipUnitTests'
             }
         }
 
-        stage ('CODE ANALYSIS WITH CHECKSTYLE'){
+        stage ('D-CODE ANALYSIS WITH CHECKSTYLE'){
             steps {
                 sh 'mvn checkstyle:checkstyle'
             }
@@ -48,7 +48,7 @@ pipeline {
             }
         }
 
-        stage('CODE ANALYSIS with SONARQUBE') {
+        stage('E-CODE ANALYSIS with SONARQUBE') {
 
             environment {
                 scannerHome = tool 'mysonarscanner4'
@@ -72,7 +72,7 @@ pipeline {
             }
         }
 
-        stage('Build App Image') {
+        stage('F-Build App Image') {
           steps {
             script {
               dockerImage = docker.build registry + ":V$BUILD_NUMBER"
@@ -80,7 +80,7 @@ pipeline {
           }
         }
 
-        stage('Upload Image'){
+        stage('G-Upload Image'){
           steps{
             script {
               docker.withRegistry('', registryCredential) {
@@ -91,13 +91,13 @@ pipeline {
           }
         }
 
-        stage('Remove Unused docker image') {
+        stage('H-Remove Unused docker image') {
           steps{
             sh "docker rmi $registry:V$BUILD_NUMBER"
           }
         }
 
-        stage('Kubernetes Deploy') {
+        stage('I-Kubernetes Deploy') {
           agent {label 'KOPS'}
             steps {
               sh "helm upgrade --install --force vprofile-stack helm/vprofilecharts --set appimage=${registry}:V${BUILD_NUMBER} --namespace prod"

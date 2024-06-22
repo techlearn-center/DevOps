@@ -84,11 +84,11 @@ pipeline {
                             nexusArtifactUploader(
                                 nexusVersion: 'nexus3',
                                 protocol: 'http',
-                                nexusUrl: '34.238.44.66:8081',
+                                nexusUrl: '3.138.119.108:8081',
                                 groupId: pom.groupId,
                                 version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
                                 repository: 'vprofile-repo',
-                                credentialsId: 'nexuslogin',
+                                credentialsId: 'nexus',
                                 artifacts: [
                                     [artifactId: pom.artifactId,
                                     classifier: '',
