@@ -11,9 +11,9 @@ pipeline {
         registryCredential = 'dockerhub'
     }
 
-    A stages{
+    stages{
 
-        stage('BUILD'){
+        stage('A-BUILD'){
             steps {
                 sh 'mvn clean install -DskipTests'
             }
@@ -25,19 +25,19 @@ pipeline {
             }
         }
 
-        B stage('UNIT TEST'){
+        stage('B-UNIT TEST'){
             steps {
                 sh 'mvn test'
             }
         }
 
-        C stage('INTEGRATION TEST'){
+        stage('C-INTEGRATION TEST'){
             steps {
                 sh 'mvn verify -DskipUnitTests'
             }
         }
 
-        D stage ('CODE ANALYSIS WITH CHECKSTYLE'){
+        stage ('D-CODE ANALYSIS WITH CHECKSTYLE'){
             steps {
                 sh 'mvn checkstyle:checkstyle'
             }
@@ -48,7 +48,7 @@ pipeline {
             }
         }
 
-        E stage('CODE ANALYSIS with SONARQUBE') {
+        stage('E-CODE ANALYSIS with SONARQUBE') {
 
             environment {
                 scannerHome = tool 'mysonarscanner4'
@@ -72,7 +72,7 @@ pipeline {
             }
         }
 
-       F stage('Build App Image') {
+        stage('F-Build App Image') {
           steps {
             script {
               dockerImage = docker.build registry + ":V$BUILD_NUMBER"
@@ -80,7 +80,7 @@ pipeline {
           }
         }
 
-       G stage('Upload Image'){
+        stage('G-Upload Image'){
           steps{
             script {
               docker.withRegistry('', registryCredential) {
@@ -91,13 +91,13 @@ pipeline {
           }
         }
 
-       H stage('Remove Unused docker image') {
+        stage('H-Remove Unused docker image') {
           steps{
             sh "docker rmi $registry:V$BUILD_NUMBER"
           }
         }
 
-       I stage('Kubernetes Deploy') {
+        stage('I-Kubernetes Deploy') {
           agent {label 'KOPS'}
             steps {
               sh "helm upgrade --install --force vprofile-stack helm/vprofilecharts --set appimage=${registry}:V${BUILD_NUMBER} --namespace prod"
