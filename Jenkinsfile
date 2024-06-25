@@ -7,16 +7,15 @@ pipeline {
     }
 */
     environment {
-        registry = "niilaryea77/cicd"
+        registry = "techlearn2024/cicd"
         registryCredential = 'dockerhub'
     }
 
     stages{
 
-        stage('A-BUILD'){
+        stage('BUILD'){
             steps {
-                sh 'mvn clean install -U'
-		sh 'mvn clean install -DskipTests'
+                sh 'mvn clean install -DskipTests'
             }
             post {
                 success {
@@ -26,19 +25,19 @@ pipeline {
             }
         }
 
-        stage('B-UNIT TEST'){
+        stage('UNIT TEST'){
             steps {
                 sh 'mvn test'
             }
         }
 
-        stage('C-INTEGRATION TEST'){
+        stage('INTEGRATION TEST'){
             steps {
                 sh 'mvn verify -DskipUnitTests'
             }
         }
 
-        stage ('D-CODE ANALYSIS WITH CHECKSTYLE'){
+        stage ('CODE ANALYSIS WITH CHECKSTYLE'){
             steps {
                 sh 'mvn checkstyle:checkstyle'
             }
@@ -49,7 +48,7 @@ pipeline {
             }
         }
 
-        stage('E-CODE ANALYSIS with SONARQUBE') {
+        stage('CODE ANALYSIS with SONARQUBE') {
 
             environment {
                 scannerHome = tool 'mysonarscanner4'
@@ -68,12 +67,12 @@ pipeline {
                 }
 
                 timeout(time: 10, unit: 'MINUTES') {
-			waitForQualityGate abortPipeline: true
+                    waitForQualityGate abortPipeline: true
                 }
             }
         }
 
-        stage('F-Build App Image') {
+        stage('Build App Image') {
           steps {
             script {
               dockerImage = docker.build registry + ":V$BUILD_NUMBER"
@@ -81,7 +80,7 @@ pipeline {
           }
         }
 
-        stage('G-Upload Image'){
+        stage('Upload Image'){
           steps{
             script {
               docker.withRegistry('', registryCredential) {
@@ -92,13 +91,13 @@ pipeline {
           }
         }
 
-        stage('H-Remove Unused docker image') {
+        stage('Remove Unused docker image') {
           steps{
             sh "docker rmi $registry:V$BUILD_NUMBER"
           }
         }
 
-        stage('I-Kubernetes Deploy') {
+        stage('Kubernetes Deploy') {
           agent {label 'KOPS'}
             steps {
               sh "helm upgrade --install --force vprofile-stack helm/vprofilecharts --set appimage=${registry}:V${BUILD_NUMBER} --namespace prod"
