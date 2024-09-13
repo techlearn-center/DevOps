@@ -15,4 +15,12 @@
 
  if it's on a virtual or cloud server, get the Ip of the server and paste it in the browser
 
- You should see
+ You should see the image below:
+
+ ![image info](./emart_homepage.PNG)
+
+Click on register to signup as seen below:
+
+![image info](./emart-reg-page.PNG)
+
+
