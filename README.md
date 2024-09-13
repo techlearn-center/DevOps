@@ -16,5 +16,10 @@ The username and password for login are:
 - Username: admin_vp
 - Password: admin_vp
 
+This is what you should get when all containers are all up and running
 
 ![image info](./vprofileapp_login.PNG)
+
+Below is the image of the home page when you login with the username and password above
+
+![image info](./vprofileapp_homepage.PNG)
