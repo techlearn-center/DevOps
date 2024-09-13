@@ -15,3 +15,25 @@ The username and password for login are:
 
 - Username: admin_vp
 - Password: admin_vp
+
+This is what you should get when all containers are all up and running
+
+![image info](./vprofileapp_login.PNG)
+
+Below is the image of the home page when you login with the username and password above
+
+![image info](./vprofileapp_homepage.PNG)
+
+To cleanup you need to bring down all containers and delete all images, run the following:
+```
+docker compose down
+```
+
+```
+docker system prune -a
+```
+
+Now verify if all containers have been deleted:
+```
+docker compose ps -a
+```
