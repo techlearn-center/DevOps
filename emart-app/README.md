@@ -10,6 +10,9 @@
   ```
 
  It takes approximately 7 minutes for all containers to be up and running. 
- Go to your browser and type ```localhost```
+ 
+ if you are running the containers on your local machine then go to your browser and type ```localhost``` 
+
+ if it's on a virtual or cloud server, get the Ip of the server and paste it in the browser
 
  You should see
