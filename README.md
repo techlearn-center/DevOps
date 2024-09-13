@@ -1,6 +1,8 @@
 # Vprofile Docker Project
-For the Docker project, simply clone the docker-compose.yml file to your local machine or cloud server where Docker Engine is installed and running.
-
+For the Docker project, simply download the docker-compose.yml file to your local machine or cloud server where Docker Engine is installed and running.
+```
+wget https://raw.githubusercontent.com/techlearn-center/DevOps/docker/vprofile-project/docker-compose.yml
+```
 Next, run the following command to start all the containers in detached mode:
 
 ```
