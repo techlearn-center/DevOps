@@ -31,3 +31,9 @@ docker compose down
 
 ```
 docker system prune -a
+```
+
+Now verify if all containers have been deleted:
+```
+docker compose ps -a
+```
