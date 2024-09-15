@@ -26,7 +26,7 @@ resource "aws_key_pair" "container-key" {
 
 resource "aws_instance" "container-ec2" {
   ami                    = data.aws_ami.ubuntu-2204-LTS.id
-  instance_type          = "t2.small"
+  instance_type          = "t2.medium"
   subnet_id              = aws_subnet.container.id
   vpc_security_group_ids = [aws_security_group.webserver-security-group.id]
   key_name               = aws_key_pair.container-key.key_name
