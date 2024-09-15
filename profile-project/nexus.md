@@ -16,14 +16,18 @@
 
 ![image info](./nexus-jenkins-plugin.PNG)
 
-![image info](./nexus-systems.PNG)
 
-![image info](./nexus-systems2.PNG)
 
 2. **Verify Nexus Plugin Installation in Jenkins:**
 
    - Go to **Manage Jenkins** > **System Settings**.
    - Search for **Nexus** to verify that the plugin is installed successfully.
+
+
+![image info](./nexus-systems.PNG)
+
+
+![image info](./nexus-systems2.PNG)
 
 3. **Set Up Jenkins Credentials for Nexus Authentication:**
 
