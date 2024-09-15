@@ -2,7 +2,7 @@ pipeline {
     agent any 
     tools {
       maven "MAVEN3"
-      jdk "OracleJDK11"
+      jdk "OracleJDK17"
     }
 
     stages {
@@ -47,7 +47,7 @@ pipeline {
       }
       stage('Sonar Analysis'){
         environment {
-           scannerHome = tool 'sonar4.7'
+           scannerHome = tool 'sonar6.1'
         }
         steps {
              // Change directory to 'profile-project' before running the Sonarqube command
