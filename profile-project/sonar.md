@@ -7,14 +7,14 @@
 1. Go to **Manage Jenkins** > **Global Tool Configuration**.
 2. Search for SonarQube Scanner (use `Ctrl + F` to find it quickly).
 
- ![image info](./sonarqube-token.PNG)
+ ![image info](./jenkins-sonar.PNG)
 
 3. Click on **Add SonarQube Scanner** (not MSBuild).
 4. Name the scanner (e.g., `sonar6.1`).
    - The name doesn’t matter, but it should match the name used in your Jenkinsfile for consistency.
 5. In the version drop-down, select **SonarQube Scanner 6.1** (or the latest version).
 
- ![image info](./jenkins-sonar.PNG)
+ ![image info](./jenkins-sonar2.PNG)
 
 
 ### Step 3: Integrate SonarQube Server in Jenkins
@@ -41,3 +41,6 @@
    - Select **Kind: Secret Text** and paste the copied token.
    - Provide an ID and description (e.g., `MySonarToken`).
 7. Save the configuration.
+
+
+ ![image info](./sonarqube-token.PNG)
