@@ -35,3 +35,9 @@
    - Go to **Manage Jenkins** > **Credentials**.
    - Click on **System** > **Global credentials (unrestricted)**.
    - Add a new domain, then choose **Username/Password** for the credentials and complete the required details.
+
+![image info](./add-credential.PNG)
+
+![image info](./add-credential2.PNG)
+
+![image info](./add-cred3.PNG)
