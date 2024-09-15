@@ -35,7 +35,7 @@
      - **Server URL**: Enter the URL of your Nexus instance (e.g., `http://nexus-server:8081`).
      - **Credentials**: Use the credentials configured in **Step 3**.
 
-![image info](./nexus-jenkins-plugin.PNG)
+![image info](./neus-jenkins-config.PNG)
 
 3. **Set Up Jenkins Credentials for Nexus Authentication:**
 
