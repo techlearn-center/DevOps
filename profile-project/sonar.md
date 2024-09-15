@@ -5,6 +5,9 @@
 
 ### Step 2: Configure SonarQube Scanner in Jenkins
 1. Go to **Manage Jenkins** > **Global Tool Configuration (Tools)**.
+
+ ![image info](./manage-jenkins.PNG)
+
 2. Search for SonarQube Scanner (use `Ctrl + F` to find it quickly).
 
  ![image info](./SonarScanner.PNG)
