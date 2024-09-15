@@ -11,6 +11,15 @@
      More details here: [Sonatype Nexus Jenkins Integration](https://help.sonatype.com/en/sonatype-platform-plugin-for-jenkins.html)
    - After entering the URL, click **Deploy**.
 
+
+ ![image info](./nexus-jenkins-installation.PNG)
+
+![image info](./nexus-jenkins-plugin.PNG)
+
+![image info](./nexus-systems.PNG)
+
+![image info](./nexus-systems2.PNG)
+
 2. **Verify Nexus Plugin Installation in Jenkins:**
 
    - Go to **Manage Jenkins** > **System Settings**.
