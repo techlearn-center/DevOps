@@ -14,9 +14,6 @@
    - The name doesn’t matter, but it should match the name used in your Jenkinsfile for consistency.
 5. In the version drop-down, select **SonarQube Scanner 6.1** (or the latest version).
 
- ![image info](./jenkins-sonar2.PNG)
-
-
 ### Step 3: Integrate SonarQube Server in Jenkins
 1. In Jenkins, go to **Manage Jenkins** > **Configure System**.
 2. Scroll down to the **SonarQube servers** section.
@@ -26,6 +23,8 @@
 5. Give the server a name (e.g., `sonar`).
 6. In the **SonarQube server URL** field, enter the URL of your SonarQube server.
    - Use the private IP if you're on the same network as the SonarQube server, or the public IP if not.
+
+![image info](./jenkins-sonar2.PNG)
 
 ### Step 4: Generate and Add SonarQube Token
 1. Go to the SonarQube server and log in.
