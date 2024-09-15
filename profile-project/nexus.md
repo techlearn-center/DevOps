@@ -29,6 +29,14 @@
 
 ![image info](./nexus-systems2.PNG)
 
+- Configure Nexus by adding the following:
+     - **Display Name**: Same name as referenced in the `Jenkinsfile`.
+     - **Server ID**: Use the same value as the **Display Name**.
+     - **Server URL**: Enter the URL of your Nexus instance (e.g., `http://nexus-server:8081`).
+     - **Credentials**: Use the credentials configured in **Step 3**.
+
+![image info](./nexus-jenkins-plugin.PNG)
+
 3. **Set Up Jenkins Credentials for Nexus Authentication:**
 
    - To enable Jenkins to authenticate to Nexus and upload artifacts, you need to add credentials in Jenkins.
