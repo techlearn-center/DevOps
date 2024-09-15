@@ -14,6 +14,9 @@
    - The name doesn’t matter, but it should match the name used in your Jenkinsfile for consistency.
 5. In the version drop-down, select **SonarQube Scanner 6.1** (or the latest version).
 
+ ![image info](./jenkins-sonar.PNG)
+
+
 ### Step 3: Integrate SonarQube Server in Jenkins
 1. In Jenkins, go to **Manage Jenkins** > **Configure System**.
 2. Scroll down to the **SonarQube servers** section.
