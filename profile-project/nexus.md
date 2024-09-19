@@ -12,9 +12,9 @@
    - After entering the URL, click **Deploy**.
 
 
- ![image info](./nexus-jenkins-installation.PNG)
+ ![image info](images/nexus-jenkins-installation.PNG)
 
-![image info](./nexus-jenkins-plugin.PNG)
+![image info](images/nexus-jenkins-plugin.PNG)
 
 
 
@@ -24,10 +24,10 @@
    - Search for **Nexus** to verify that the plugin is installed successfully.
 
 
-![image info](./nexus-systems.PNG)
+![image info](images/nexus-systems.PNG)
 
 
-![image info](./nexus-systems2.PNG)
+![image info](images/nexus-systems2.PNG)
 
 - Configure Nexus by adding the following:
      - **Display Name**: Same name as referenced in the `Jenkinsfile`.
@@ -35,7 +35,7 @@
      - **Server URL**: Enter the URL of your Nexus instance (e.g., `http://nexus-server:8081`).
      - **Credentials**: Use the credentials configured in **Step 3**.
 
-![image info](./neus-jenkins-config.PNG)
+![image info](images/neus-jenkins-config.PNG)
 
 3. **Set Up Jenkins Credentials for Nexus Authentication:**
 
@@ -44,11 +44,11 @@
    - Click on **System** > **Global credentials (unrestricted)**.
    - Add a new domain, then choose **Username/Password** for the credentials and complete the required details.
 
-![image info](./add-credential.PNG)
+![image info](images/add-credential.PNG)
 
-![image info](./add-credential2.PNG)
+![image info](images/add-credential2.PNG)
 
-![image info](./add-cred3.PNG)
+![image info](images/add-cred3.PNG)
 
 
 4.  **Create the Repository in Nexus**:  
