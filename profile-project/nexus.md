@@ -1,4 +1,4 @@
-### Ensure Nexus is Up and Running
+### Ensure Nexus is Up and Running (follow this step https://github.com/techlearn-center/DevOps/tree/Terraform/exercise7-instance-ubuntu)
 
 1. **Install Sonatype Nexus Plugin for Jenkins:**
 
