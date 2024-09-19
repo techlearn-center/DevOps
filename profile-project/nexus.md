@@ -56,6 +56,6 @@
    - Go to **Repositories** -> **Create repository**, and select the appropriate type of repository (e.g., Maven hosted).
    - When creating the repository, ensure that the repository name matches exactly what you have specified in the Jenkinsfile under the `repository URL` section to avoid any issues during artifact deployment.
 
-![image info](images/nexus-create-repo.PNG)
-
 ![image info](images/nexus-interface-repo.PNG)
+
+![image info](images/nexus-create-repo.PNG)
