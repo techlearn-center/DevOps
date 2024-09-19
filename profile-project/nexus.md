@@ -54,8 +54,9 @@
 4.  **Create the Repository in Nexus**:  
    Proceed to your Nexus server and create the necessary repository (e.g., Maven, NPM, or Docker).  
    - Go to **Repositories** -> **Create repository**, and select the appropriate type of repository (e.g., Maven hosted).
-   - When creating the repository, ensure that the repository name matches exactly what you have specified in the Jenkinsfile under the `repository URL` section to avoid any issues during artifact deployment.
 
 ![image info](images/nexus-interface-repo.PNG)
+
+   - When creating the repository, ensure that the repository name matches exactly what you have specified in the Jenkinsfile under the `repository URL` section to avoid any issues during artifact deployment.
 
 ![image info](images/nexus-create-repo.PNG)
