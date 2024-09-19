@@ -1,6 +1,6 @@
 # SonarQube Integration Steps
 
-### Step 1: Verify SonarQube is Running
+### Step 1: Verify SonarQube is Running (follow this step https://github.com/techlearn-center/DevOps/tree/Terraform/exercise7-instance-ubuntu)
 - Ensure SonarQube is up and running before proceeding.
 
 ### Step 2: Configure SonarQube Scanner in Jenkins
