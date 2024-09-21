@@ -32,3 +32,8 @@ This directory contains Terraform files for deploying Jenkins, Nexus, and SonarQ
 - Ensure that the AWS credentials are properly configured before running Terraform.
 - Each tool will be deployed in its own EC2 instance, and you can access them using the public IPs provided in the Terraform output.
 
+
+
+Follow the links below to integrate sonarqube and nexus with Jenkins:
+https://github.com/techlearn-center/DevOps/blob/CICD/profile-project/nexus.md
+https://github.com/techlearn-center/DevOps/blob/CICD/profile-project/maven.md
