@@ -34,7 +34,7 @@ resource "aws_instance" "container-ec2" {
 
   user_data = <<-EOF
     #!/bin/bash
-    yum install java-11-openjdk wget -y  # Install latest Java 11
+    yum install java-17-openjdk wget -y  # Install latest Java 11
     mkdir -p /opt/nexus/
     mkdir -p /tmp/nexus/                           
     cd /tmp/nexus/
