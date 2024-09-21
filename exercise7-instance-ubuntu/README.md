@@ -34,6 +34,48 @@ This directory contains Terraform files for deploying Jenkins, Nexus, and SonarQ
 
 
 
+Here are the steps for **"Checking Jenkins, Nexus, and SonarQube in the Browser"** in markdown format:
+
+```markdown
+## Checking Jenkins, Nexus, and SonarQube in the Browser
+
+After provisioning the resources using Terraform, follow these steps to check if Jenkins, Nexus, and SonarQube are running by accessing them in your browser:
+
+### 1. Jenkins:
+- **URL**: `http://<Jenkins-EC2-Public-IP>:8080`
+- **Default Port**: `8080`
+- Once Jenkins is up and running, you will be prompted to unlock it using the administrator password.
+- To find the administrator password, SSH into your Jenkins EC2 instance and use the following command:
+  ```bash
+  cat /var/lib/jenkins/secrets/initialAdminPassword
+  ```
+
+### 2. Nexus:
+- **URL**: `http://<Nexus-EC2-Public-IP>:8081`
+- **Default Port**: `8081`
+- Nexus is accessible on port 8081. You can log in using the default credentials:
+  - **Username**: `admin`
+  - **Password**: The default admin password is located in the file:
+    ```bash
+    cat /opt/sonatype-work/nexus3/admin.password
+    ```
+
+### 3. SonarQube:
+- **URL**: `http://<SonarQube-EC2-Public-IP>:9000`
+- **Default Port**: `9000`
+- SonarQube is accessible on port 9000. You can log in using the default credentials:
+  - **Username**: `admin`
+  - **Password**: `admin`
+  
+Make sure to replace `<Jenkins-EC2-Public-IP>`, `<Nexus-EC2-Public-IP>`, and `<SonarQube-EC2-Public-IP>` with the actual public IP addresses of the respective EC2 instances.
+```
+
+This format provides a clear, structured set of instructions for accessing Jenkins, Nexus, and SonarQube in the browser with their respective ports and default credentials.
+
+
 Follow the links below to integrate sonarqube and nexus with Jenkins:
 - Nexus: https://github.com/techlearn-center/DevOps/blob/CICD/profile-project/nexus.md
 - Sonarqube:  https://github.com/techlearn-center/DevOps/blob/CICD/profile-project/sonar.md
+
+
+
