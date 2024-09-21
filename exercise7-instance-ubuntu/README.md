@@ -35,5 +35,5 @@ This directory contains Terraform files for deploying Jenkins, Nexus, and SonarQ
 
 
 Follow the links below to integrate sonarqube and nexus with Jenkins:
-https://github.com/techlearn-center/DevOps/blob/CICD/profile-project/nexus.md
-https://github.com/techlearn-center/DevOps/blob/CICD/profile-project/maven.md
+- Nexus: https://github.com/techlearn-center/DevOps/blob/CICD/profile-project/nexus.md
+- Sonarqube:  https://github.com/techlearn-center/DevOps/blob/CICD/profile-project/maven.md
