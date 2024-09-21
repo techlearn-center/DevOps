@@ -7,7 +7,7 @@ sudo apt search jdk
 ```
 
 ```
-sudo apt install openjdk-11-jdk -y
+sudo apt install openjdk-17-jdk -y
 ```
 
 ```
