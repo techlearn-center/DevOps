@@ -1,4 +1,4 @@
-# AWS Terraform Setup for Jenkins, Nexus, and SonarQube
+# AWS Terraform Setup for Jenkins, Maven, Nexus, and SonarQube
 
 This directory contains Terraform files for deploying Jenkins, Nexus, and SonarQube on Ubuntu and CentOS EC2 instances in AWS. Follow the steps below to provision each tool separately.
 
