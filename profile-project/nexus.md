@@ -4,7 +4,7 @@
 
    Since Jenkins does not have a built-in Nexus plugin, we need to manually deploy the Sonatype Nexus plugin.
 
-   - Navigate to **Manage Jenkins** > **Plugins >**Advanced Settings**.
+   - Navigate to **Manage Jenkins** >**Plugins >**Advanced Settings**.
    - Add the following URL:  
      [Nexus Jenkins Plugin 3.20.4-01](https://download.sonatype.com/integrations/jenkins/nexus-jenkins-plugin-3.20.4-01.hpi)
    - This URL was retrieved from Sonatype’s official documentation.  
