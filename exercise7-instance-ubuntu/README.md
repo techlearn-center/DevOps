@@ -8,7 +8,7 @@ This directory contains Terraform files for deploying Jenkins, Nexus, and SonarQ
    - After cloning this repository to your local machine, create 3 separate copies of the directory, each for Jenkins, Nexus, and SonarQube.
 
 2. **Setting Up Jenkins:**
-   - To set up Jenkins, copy the content of `ec2-install-jenkins.txt` into the `ec2-instance.tf` file within the Jenkins directory.
+   - To set up Jenkins and Maven, copy the content of `ec2-install-jenkins-maven.txt` into the `ec2-instance.tf` file within the Jenkins directory.
    - Create the key pair required for the EC2 instance by running the following command:
      ```bash
      ssh-keygen
