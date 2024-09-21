@@ -36,7 +36,7 @@ This directory contains Terraform files for deploying Jenkins, Nexus, and SonarQ
 
 
 
-```markdown
+
 ## Checking Jenkins, Nexus, and SonarQube in the Browser
 
 After provisioning the resources using Terraform, follow these steps to check if Jenkins, Nexus, and SonarQube are running by accessing them in your browser:
@@ -68,7 +68,7 @@ After provisioning the resources using Terraform, follow these steps to check if
   - **Password**: `admin`
   
 Make sure to replace `<Jenkins-EC2-Public-IP>`, `<Nexus-EC2-Public-IP>`, and `<SonarQube-EC2-Public-IP>` with the actual public IP addresses of the respective EC2 instances.
-```
+
 
 This format provides a clear, structured set of instructions for accessing Jenkins, Nexus, and SonarQube in the browser with their respective ports and default credentials.
 
