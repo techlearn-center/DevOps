@@ -61,9 +61,9 @@ After provisioning the resources using Terraform, follow these steps to check if
     ```
 
 ### 3. SonarQube:
-- **URL**: `http://<SonarQube-EC2-Public-IP>:9000`
-- **Default Port**: `9000`
-- SonarQube is accessible on port 9000. You can log in using the default credentials:
+- **URL**: `http://<SonarQube-EC2-Public-IP>:80`
+- **Default Port**: `80`
+- SonarQube is accessible on port 80. You can log in using the default credentials:
   - **Username**: `admin`
   - **Password**: `admin`
   
