@@ -34,7 +34,7 @@ This directory contains Terraform files for deploying Jenkins, Nexus, and SonarQ
 
 
 
-Here are the steps for **"Checking Jenkins, Nexus, and SonarQube in the Browser"** in markdown format:
+
 
 ```markdown
 ## Checking Jenkins, Nexus, and SonarQube in the Browser
