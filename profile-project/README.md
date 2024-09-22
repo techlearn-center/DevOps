@@ -27,8 +27,8 @@ To set up Jenkins with SonarQube, Nexus, and Maven, you will need the following 
 - **Git Plugin**: Integrates Git with Jenkins, enabling code fetching from Git repositories.
   - **Install from Jenkins**: Manage Jenkins → Manage Plugins → Available → Search for "Git Plugin".
   - **Plugin Page**: [Git Plugin](https://plugins.jenkins.io/git/)
-  - **Pipeline: Stage View Plugin
-  - **Blue Ocean Plugin
+  - **Pipeline**: Stage View Plugin
+  - **Blue Ocean Plugin**
 - **Email Extension Plugin**: Sends customizable email notifications on build status.
   - **Install from Jenkins**: Manage Jenkins → Manage Plugins → Available → Search for "Email Extension Plugin".
   - **Plugin Page**: [Email Extension Plugin](https://plugins.jenkins.io/email-ext/)
