@@ -1,3 +1,5 @@
+# Prerequisites
+
 To set up Jenkins with SonarQube, Nexus, and Maven, you will need the following Jenkins plugins for smooth integration and functionality:
 
 ### Plugins for Jenkins Integration:
@@ -41,7 +43,7 @@ With these plugins, you will have the necessary integrations to build, test, and
 
 
 
-# Prerequisites
+
 #
 - JDK 17 or later
 - Maven 3 
