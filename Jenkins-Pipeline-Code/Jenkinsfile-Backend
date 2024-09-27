@@ -41,11 +41,10 @@ pipeline {
                 }
             }
         }
-        stage('Dependency Check') {
+        stage('OWASP Dependency-Check Scan') {
             steps {
-                dir('Application-Code/backend') {
-                    // Ensure Dependency-Check Plugin is installed and properly configured
-                    dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'Dependency-Check'
+                dir('Application-Code/frontend') {
+                    dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
                     dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
                 }
             }
