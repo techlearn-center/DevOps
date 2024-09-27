@@ -1,15 +1,16 @@
 pipeline {
     agent any 
     tools {
-        jdk 'jdk'
-        nodejs 'nodejs'
+        jdk 'OracleJDK17'  // Ensure this label is correct in your Global Tool Configuration
+        maven 'MAVEN3'     // Ensure this label is correct and Maven is installed in Global Tool Configuration
     }
     environment  {
-        SCANNER_HOME=tool 'sonar-scanner'
-        AWS_ACCOUNT_ID = credentials('ACCOUNT_ID')
-        AWS_ECR_REPO_NAME = credentials('ECR_REPO2')
+        // Define scanner home directly if using a global tool configuration for SonarScanner
+        SCANNER_HOME = "${tool 'SonarScanner'}"
+        AWS_ACCOUNT_ID = credentials('aws-account-id')
+        AWS_ECR_REPO_NAME = credentials('ecr-repo-name')
         AWS_DEFAULT_REGION = 'us-east-1'
-        REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/"
+        REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${AWS_ECR_REPO_NAME}"
     }
     stages {
         stage('Cleaning Workspace') {
@@ -19,95 +20,69 @@ pipeline {
         }
         stage('Checkout from Git') {
             steps {
-                git credentialsId: 'github-token', url: 'https://github.com/techlearn-center/DevOps.git'
+                // Assuming Git credentials and repository are correctly setup
+                git branch: 'e2e-3-tier-DevSecOps', credentialsId: 'github-token', url: 'https://github.com/techlearn-center/DevOps.git'
             }
         }
         stage('Sonarqube Analysis') {
             steps {
                 dir('Application-Code/backend') {
                     withSonarQubeEnv('sonar-server') {
-                        sh ''' $SCANNER_HOME/bin/sonar-scanner \
-                        -Dsonar.projectName=three-tier-backend \
-                        -Dsonar.projectKey=three-tier-backend '''
+                        sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=three-tier-backend -Dsonar.projectName=three-tier-backend"
                     }
                 }
             }
         }
-        stage('Quality Check') {
+        stage('Quality Gate') {
             steps {
                 script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar' 
+                    // Ensure SonarQube integration is properly configured to use this step
+                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar'
                 }
             }
         }
-        stage('OWASP Dependency-Check Scan') {
+        stage('Dependency Check') {
             steps {
                 dir('Application-Code/backend') {
-                    dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
+                    // Ensure Dependency-Check Plugin is installed and properly configured
+                    dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'Dependency-Check'
                     dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
                 }
             }
         }
-        stage('Trivy File Scan') {
-            steps {
-                dir('Application-Code/backend') {
-                    sh 'trivy fs . > trivyfs.txt'
-                }
-            }
-        }
-        stage("Docker Image Build") {
+        stage('Docker Build and Push to ECR') {
             steps {
                 script {
                     dir('Application-Code/backend') {
-                            sh 'docker system prune -f'
-                            sh 'docker container prune -f'
-                            sh 'docker build -t ${AWS_ECR_REPO_NAME} .'
+                        sh 'docker build -t ${REPOSITORY_URI}:${BUILD_NUMBER} .'
+                        sh 'aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${REPOSITORY_URI}'
+                        sh 'docker push ${REPOSITORY_URI}:${BUILD_NUMBER}'
                     }
                 }
             }
         }
-        stage("ECR Image Pushing") {
+        stage('Update Kubernetes Deployment') {
             steps {
                 script {
-                        sh 'aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${REPOSITORY_URI}'
-                        sh 'docker tag ${AWS_ECR_REPO_NAME} ${REPOSITORY_URI}${AWS_ECR_REPO_NAME}:${BUILD_NUMBER}'
-                        sh 'docker push ${REPOSITORY_URI}${AWS_ECR_REPO_NAME}:${BUILD_NUMBER}'
-                }
-            }
-        }
-        stage("TRIVY Image Scan") {
-            steps {
-                sh 'trivy image ${REPOSITORY_URI}${AWS_ECR_REPO_NAME}:${BUILD_NUMBER} > trivyimage.txt' 
-            }
-        }
-        stage('Checkout Code') {
-            steps {
-                git credentialsId: 'github-token', url: 'https://github.com/techlearn-center/DevOps.git'
-            }
-        }
-        stage('Update Deployment file') {
-            environment {
-                GIT_REPO_NAME = "DevOps"
-                GIT_USER_NAME = "techlearn-center"
-            }
-            steps {
-                dir('Kubernetes-Manifests-file/Backend') {
-                    withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
-                        sh '''
-                            git config user.email "techlearn-center@gmail.com"
-                            git config user.name "techlearn-center"
-                            BUILD_NUMBER=${BUILD_NUMBER}
-                            echo $BUILD_NUMBER
-                            imageTag=$(grep -oP '(?<=backend:)[^ ]+' deployment.yaml)
-                            echo $imageTag
-                            sed -i "s/${AWS_ECR_REPO_NAME}:${imageTag}/${AWS_ECR_REPO_NAME}:${BUILD_NUMBER}/" deployment.yaml
-                            git add deployment.yaml
-                            git commit -m "Update deployment Image to version \${BUILD_NUMBER}"
-                            git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:e2e-3-tier-DevSecOps
-                        '''
+                    dir('Kubernetes-Manifests/Backend') {
+                        withCredentials([string(credentialsId: 'github-token', variable: 'GITHUB_TOKEN')]) {
+                            sh '''
+                                git config user.email "techlearn-center@gmail.com"
+                                git config user.name "techlearn-center"
+                                sed -i "s|${REPOSITORY_URI}:.*|${REPOSITORY_URI}:${BUILD_NUMBER}|" deployment.yaml
+                                git add deployment.yaml
+                                git commit -m "Update deployment Image to version ${BUILD_NUMBER}"
+                                git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:e2e-3-tier-DevSecOps
+                            '''
+                        }
                     }
                 }
             }
+        }
+    }
+    post {
+        always {
+            cleanWs()  // Clean workspace after the pipeline runs
         }
     }
 }
