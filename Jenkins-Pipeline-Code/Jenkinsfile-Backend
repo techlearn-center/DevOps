@@ -79,7 +79,7 @@ pipeline {
         stage('Update Kubernetes Deployment') {
             steps {
                 script {
-                    dir('Kubernetes-Manifests/Backend') {
+                    dir('Kubernetes-Manifests-file/Backend') {
                         withCredentials([string(credentialsId: 'github-token', variable: 'GITHUB_TOKEN')]) {
                             sh '''
                                 git config user.email "techlearn-center@gmail.com"
