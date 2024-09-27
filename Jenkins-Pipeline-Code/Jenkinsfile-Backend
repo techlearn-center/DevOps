@@ -28,7 +28,7 @@ pipeline {
             steps {
                 dir('Application-Code/backend') {
                     withSonarQubeEnv('sonar-server') {
-                        sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=three-tier-frontend -Dsonar.projectName=three-tier-frontend"
+                        sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=three-tier-backend -Dsonar.projectName=three-tier-backend"
                     }
                 }
             }
@@ -43,7 +43,7 @@ pipeline {
         }
         stage('OWASP Dependency-Check Scan') {
             steps {
-                dir('Application-Code/frontend') {
+                dir('Application-Code/backend') {
                     dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
                     dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
                 }
@@ -51,7 +51,7 @@ pipeline {
         }
          stage('Trivy File Scan') {
             steps {
-                dir('Application-Code/frontend') {
+                dir('Application-Code/backend') {
                     sh 'trivy fs . > trivyfs.txt'
                 }
             }
@@ -59,7 +59,7 @@ pipeline {
         stage("Docker Image Build") {
             steps {
                 script {
-                    dir('Application-Code/frontend') {
+                    dir('Application-Code/backend') {
                             sh 'docker system prune -f'
                             sh 'docker container prune -f'
                             sh 'docker build -t ${AWS_ECR_REPO_NAME} .'
