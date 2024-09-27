@@ -1,11 +1,12 @@
 pipeline {
     agent any 
     tools {
-        jdk 'jdk'
-        nodejs 'nodejs'
+        jdk 'jdk'  // Ensure this label is correct in your Global Tool Configuration
+        nodejs 'nodejs'     // Ensure this label is correct and Maven is installed in Global Tool Configuration
     }
     environment  {
-        SCANNER_HOME=tool 'sonar-scanner'
+        // Define scanner home directly if using a global tool configuration for SonarScanner
+        SCANNER_HOME = "${tool 'sonar-scanner'}"
         AWS_ACCOUNT_ID = credentials('ACCOUNT_ID')
         AWS_ECR_REPO_NAME = credentials('ECR_REPO1')
         AWS_DEFAULT_REGION = 'us-east-1'
@@ -19,24 +20,24 @@ pipeline {
         }
         stage('Checkout from Git') {
             steps {
-                git credentialsId: 'GITHUB', url: 'https://github.com/AmanPathak-DevOps/End-to-End-Kubernetes-Three-Tier-DevSecOps-Project.git'
+                // Assuming Git credentials and repository are correctly setup
+                git branch: 'e2e-3-tier-DevSecOps', credentialsId: 'github-token', url: 'https://github.com/techlearn-center/DevOps.git'
             }
         }
         stage('Sonarqube Analysis') {
             steps {
-                dir('Application-Code/frontend') {
+                dir('Application-Code/backend') {
                     withSonarQubeEnv('sonar-server') {
-                        sh ''' $SCANNER_HOME/bin/sonar-scanner \
-                        -Dsonar.projectName=three-tier-frontend \
-                        -Dsonar.projectKey=three-tier-frontend '''
+                        sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=three-tier-frontend -Dsonar.projectName=three-tier-frontend"
                     }
                 }
             }
         }
-        stage('Quality Check') {
+        stage('Quality Gate') {
             steps {
                 script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token' 
+                    // Ensure SonarQube integration is properly configured to use this step
+                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar'
                 }
             }
         }
@@ -48,7 +49,7 @@ pipeline {
                 }
             }
         }
-        stage('Trivy File Scan') {
+         stage('Trivy File Scan') {
             steps {
                 dir('Application-Code/frontend') {
                     sh 'trivy fs . > trivyfs.txt'
@@ -85,29 +86,28 @@ pipeline {
                 git credentialsId: 'GITHUB', url: 'https://github.com/AmanPathak-DevOps/End-to-End-Kubernetes-Three-Tier-DevSecOps-Project.git'
             }
         }
-        stage('Update Deployment file') {
-            environment {
-                GIT_REPO_NAME = "End-to-End-Kubernetes-Three-Tier-DevSecOps-Project"
-                GIT_USER_NAME = "AmanPathak-DevOps"
-            }
+        stage('Update Kubernetes Deployment') {
             steps {
-                dir('Kubernetes-Manifests-file/Frontend') {
-                    withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
-                        sh '''
-                            git config user.email "aman07pathak@gmail.com"
-                            git config user.name "AmanPathak-DevOps"
-                            BUILD_NUMBER=${BUILD_NUMBER}
-                            echo $BUILD_NUMBER
-                            imageTag=$(grep -oP '(?<=frontend:)[^ ]+' deployment.yaml)
-                            echo $imageTag
-                            sed -i "s/${AWS_ECR_REPO_NAME}:${imageTag}/${AWS_ECR_REPO_NAME}:${BUILD_NUMBER}/" deployment.yaml
-                            git add deployment.yaml
-                            git commit -m "Update deployment Image to version \${BUILD_NUMBER}"
-                            git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:master
-                        '''
+                script {
+                    dir('Kubernetes-Manifests-file/Backend') {
+                        withCredentials([string(credentialsId: 'github-token', variable: 'GITHUB_TOKEN')]) {
+                            sh '''
+                                git config user.email "techlearn-center@gmail.com"
+                                git config user.name "techlearn-center"
+                                sed -i "s|${REPOSITORY_URI}:.*|${REPOSITORY_URI}:${BUILD_NUMBER}|" deployment.yaml
+                                git add deployment.yaml
+                                git commit -m "Update deployment Image to version ${BUILD_NUMBER}"
+                                git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:e2e-3-tier-DevSecOps
+                            '''
+                        }
                     }
                 }
             }
+        }
+    }
+    post {
+        always {
+            cleanWs()  // Clean workspace after the pipeline runs
         }
     }
 }
