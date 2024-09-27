@@ -83,7 +83,7 @@ pipeline {
         }
         stage('Checkout Code') {
             steps {
-                git credentialsId: 'GITHUB', url: 'https://github.com/AmanPathak-DevOps/End-to-End-Kubernetes-Three-Tier-DevSecOps-Project.git'
+                 git branch: 'e2e-3-tier-DevSecOps', credentialsId: 'github-token', url: 'https://github.com/techlearn-center/DevOps.git'
             }
         }
         stage('Update Kubernetes Deployment') {
@@ -94,9 +94,13 @@ pipeline {
                             sh '''
                                 git config user.email "techlearn-center@gmail.com"
                                 git config user.name "techlearn-center"
-                                sed -i "s|${REPOSITORY_URI}:.*|${REPOSITORY_URI}:${BUILD_NUMBER}|" deployment.yaml
+                                BUILD_NUMBER=${BUILD_NUMBER}
+                                echo $BUILD_NUMBER
+                                imageTag=$(grep -oP '(?<=frontend:)[^ ]+' deployment.yaml)
+                                echo $imageTag
+                                sed -i "s/${AWS_ECR_REPO_NAME}:${imageTag}/${AWS_ECR_REPO_NAME}:${BUILD_NUMBER}/" deployment.yaml
                                 git add deployment.yaml
-                                git commit -m "Update deployment Image to version ${BUILD_NUMBER}"
+                                git commit -m "Update deployment Image to version \${BUILD_NUMBER}"
                                 git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:e2e-3-tier-DevSecOps
                             '''
                         }
