@@ -10,7 +10,7 @@ pipeline {
         AWS_ACCOUNT_ID = credentials('ACCOUNT_ID')
         AWS_ECR_REPO_NAME = credentials('ECR_REPO1')
         AWS_DEFAULT_REGION = 'us-east-1'
-        REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${AWS_ECR_REPO_NAME}"
+        REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/"
     }
     stages {
         stage('Cleaning Workspace') {
@@ -28,7 +28,7 @@ pipeline {
             steps {
                 dir('Application-Code/backend') {
                     withSonarQubeEnv('sonar-server') {
-                        sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=three-tier-backend -Dsonar.projectName=three-tier-backend"
+                        sh "${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=three-tier-frontend -Dsonar.projectName=three-tier-frontend"
                     }
                 }
             }
@@ -76,7 +76,21 @@ pipeline {
                 }
             }
         }
+        stage("TRIVY Image Scan") {
+            steps {
+                sh 'trivy image ${REPOSITORY_URI}${AWS_ECR_REPO_NAME}:${BUILD_NUMBER} > trivyimage.txt' 
+            }
+        }
+        stage('Checkout Code') {
+            steps {
+                 git branch: 'e2e-3-tier-DevSecOps', credentialsId: 'github-token', url: 'https://github.com/techlearn-center/DevOps.git'
+            }
+        }
         stage('Update Kubernetes Deployment') {
+             environment {
+                GIT_REPO_NAME = "DevOps"
+                GIT_USER_NAME = "techlearn-center"
+            }
             steps {
                 script {
                     dir('Kubernetes-Manifests-file/Backend') {
@@ -84,9 +98,13 @@ pipeline {
                             sh '''
                                 git config user.email "techlearn-center@gmail.com"
                                 git config user.name "techlearn-center"
-                                sed -i "s|${REPOSITORY_URI}:.*|${REPOSITORY_URI}:${BUILD_NUMBER}|" deployment.yaml
+                                BUILD_NUMBER=${BUILD_NUMBER}
+                                echo $BUILD_NUMBER
+                                imageTag=$(grep -oP '(?<=frontend:)[^ ]+' deployment.yaml)
+                                echo $imageTag
+                                sed -i "s/${AWS_ECR_REPO_NAME}:${imageTag}/${AWS_ECR_REPO_NAME}:${BUILD_NUMBER}/" deployment.yaml
                                 git add deployment.yaml
-                                git commit -m "Update deployment Image to version ${BUILD_NUMBER}"
+                                git commit -m "Update deployment Image to version \${BUILD_NUMBER}"
                                 git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:e2e-3-tier-DevSecOps
                             '''
                         }
