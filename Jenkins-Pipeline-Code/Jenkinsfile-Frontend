@@ -87,6 +87,10 @@ pipeline {
             }
         }
         stage('Update Kubernetes Deployment') {
+             environment {
+                GIT_REPO_NAME = "DevOps"
+                GIT_USER_NAME = "techlearn-center"
+            }
             steps {
                 script {
                     dir('Kubernetes-Manifests-file/Backend') {
