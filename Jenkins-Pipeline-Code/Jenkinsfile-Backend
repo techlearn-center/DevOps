@@ -1,12 +1,12 @@
 pipeline {
     agent any 
     tools {
-        jdk 'OracleJDK17'  // Ensure this label is correct in your Global Tool Configuration
-        maven 'MAVEN3'     // Ensure this label is correct and Maven is installed in Global Tool Configuration
+        jdk 'jdk'  // Ensure this label is correct in your Global Tool Configuration
+        nodejs 'nodejs'     // Ensure this label is correct and Maven is installed in Global Tool Configuration
     }
     environment  {
         // Define scanner home directly if using a global tool configuration for SonarScanner
-        SCANNER_HOME = "${tool 'SonarScanner'}"
+        SCANNER_HOME = "${tool 'sonar-scanner'}"
         AWS_ACCOUNT_ID = credentials('aws-account-id')
         AWS_ECR_REPO_NAME = credentials('ecr-repo-name')
         AWS_DEFAULT_REGION = 'us-east-1'
