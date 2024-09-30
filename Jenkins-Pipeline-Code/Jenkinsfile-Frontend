@@ -100,8 +100,6 @@ pipeline {
                                 git config user.name "techlearn-center"
                                 BUILD_NUMBER=${BUILD_NUMBER}
                                 echo $BUILD_NUMBER
-                                ls -l  // Confirming files
-                                pwd    // Confirming directory
                                 imageTag=$(grep -oP '(?<=frontend:)[^ ]+' deployment.yaml)
                                 echo $imageTag
                                 sed -i "s/${AWS_ECR_REPO_NAME}:${imageTag}/${AWS_ECR_REPO_NAME}:${BUILD_NUMBER}/" deployment.yaml
