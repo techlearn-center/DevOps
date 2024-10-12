@@ -149,7 +149,7 @@ Run the script to setup and configure the Kubernetes cluster.
 
 Enter the AWS keys, Availability Zone, and cluster name when prompted.
  
-Cluster name needs to be in the format <name>.k8s.local
+Cluster name needs to be in the format \<name\>.k8s.local
 ```
 chmod +x install-kops-tool.sh 
 ```
