@@ -49,6 +49,9 @@ choco install vscode -y
 choco install sublimetext3.app -y
 ```
 
+```
+choco install awscli
+```
 
 ## MacOS Tools
 
