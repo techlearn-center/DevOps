@@ -12,7 +12,7 @@
 
 
 Userdata
-
+```
 #!/bin/bash
 
 #Update the system and install APache
@@ -41,3 +41,4 @@ chmod 644 /var/www/html/index.html
 
 #Restart Apache to apply changes
 systemctl restart httpd
+```
