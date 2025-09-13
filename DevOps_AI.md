@@ -4,14 +4,15 @@
 - **Week 1:** Overview & Intro to DevOps + AI in DevOps (AIOps)
 - **Week 2:** OS & Linux Basics, Bash Scripting
 - **Week 3:** Version Control with Git & GitHub Copilot/AI-assisted coding
-- **Week 4:** Build & Package Manager
+- **Week 4:** Build & Package Manager + Networking Fundamentals (TCP/IP, DNS, SSH, Load Balancing, Firewalls)
 
 ---
 
-## Month 2 – Cloud, Containers, and AI Foundations
+## Month 2 – Cloud, LAMP Stack, and Containers
 - **Week 5:** Cloud & IaaS (AWS, Azure, GCP)
-- **Week 6:** Artifact Repo Manager + AI-based Dependency Scanning (SCA tools with AI)
-- **Week 7–8:** Containers + Intro to Docker for ML workloads
+- **Week 6:** LAMP Stack (Linux, Apache, MySQL, PHP/Python) deployment
+- **Week 7:** Artifact Repo Manager + AI-based Dependency Scanning
+- **Week 8:** Containers + Intro to Docker for ML workloads
 
 ---
 
