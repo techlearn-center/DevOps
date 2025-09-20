@@ -30,7 +30,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 
 #### You now have choco installed on your computer. We will now install the rest of the tools using choco
 ```
-choco install virtualbox     ### use this to install the latest version 
+choco install virtualbox      
 ```
 ######choco install virtualbox --version=7.0.10 -y
 
