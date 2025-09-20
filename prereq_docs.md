@@ -54,8 +54,16 @@ choco install sublimetext3.app -y
 ```
 choco install awscli
 ```
+
+#### Installing Python is essential for running scripts and automating tasks in DevOps. Follow these steps to ensure you have a smooth installation
 ```
 choco install python -y
+```
+```
+choco install anaconda3
+```
+```
+choco install pycharm-community
 ```
 
 ## MacOS Tools
@@ -121,5 +129,13 @@ brew install --cask sublime-text
 ```
 brew install awscli
 ```
+#### Installing Python is essential for running scripts and automating tasks in DevOps. Follow these steps to ensure you have a smooth installation
 ```
 brew install python
+```
+```
+brew install --cast anaconda
+```
+```
+brew install --cast pycharm-ce
+```
