@@ -52,6 +52,9 @@ choco install sublimetext3.app -y
 ```
 choco install awscli
 ```
+```
+choco install python -y
+```
 
 ## MacOS Tools
 
@@ -116,3 +119,5 @@ brew install --cask sublime-text
 ```
 brew install awscli
 ```
+```
+brew install python
