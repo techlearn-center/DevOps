@@ -65,6 +65,10 @@ choco install anaconda3
 ```
 choco install pycharm-community
 ```
+##### Installing docker desktop
+```
+    choco install docker-desktop -y
+```
 
 ## MacOS Tools
 
