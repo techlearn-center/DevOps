@@ -70,6 +70,31 @@ choco install pycharm-community
     choco install docker-desktop -y
 ```
 
+#####  install and enable WSL2 on modern versions of Windows (Windows 10 Build 19041+ or Windows 11)
+
+
+Step 1: Open PowerShell as Administrator
+
+1. Open your Start Menu.
+2. Search for PowerShell (or Terminal).
+3. Right-click it and select Run as administrator
+
+
+Step 2: Run the Install Command
+
+Type or paste the following command into the prompt and press Ente
+
+```
+wsl --install
+```
+What this command automatically does for you:
+• Enables the optional Windows Subsystem for Linux and Virtual Machine Platform features.
+• Downloads and installs the latest WSL2 Linux kernel.
+• Configures WSL 2 as your default architecture version.
+• Downloads and installs the Ubuntu Linux distribution by default.
+
+
+
 ## MacOS Tools
 
 Install brew from the instructions given in the link below.
